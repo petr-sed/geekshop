@@ -10,3 +10,6 @@ def products(request):
 
 def contact(request):
     return render(request, 'mainapp/contacts.html')
+
+def deal(request):
+    return render(request, 'mainapp/deals.html')
