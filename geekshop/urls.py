@@ -22,4 +22,5 @@ urlpatterns = [
     path('products/', mainapp.products),
     path('contact/', mainapp.contact),
     path('admin/', admin.site.urls),
+    path('deal/', mainapp.deal),
 ]
