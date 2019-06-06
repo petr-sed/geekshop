@@ -1,0 +1,153 @@
+.header {
+    background-image: none;
+    height: unset;
+    margin-bottom: 40px;
+}
+
+.categories {
+    width: 100%;
+    background-color: #f4f4f4;
+}
+
+.categories ul {
+    margin: 0;
+    text-align: center;
+}
+
+.categories li {
+    margin: 15px;
+    padding: 0;
+    display: inline-block;
+}
+
+.categories a {
+    color: #6c6c6c;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.categories a:hover {
+    color: #212121;
+    text-decoration: underline;
+}
+
+.categories a:active {
+    color: #6c6c6c;
+}
+
+
+.categories .active {
+    color: #212121;
+}
+
+.categories .active:hover {
+    text-decoration: none;
+}
+
+.offer {
+    width: 100%;
+    padding: 72px 98px 100px 98px;
+    text-align: center;
+}
+
+.order {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 24.01px;
+    letter-spacing: 4.4px;
+    width: 510px;
+    height: 71px;
+    box-shadow: 0 2px 5px 1px rgba(33, 33, 33, 0.35);
+    border-radius: 35px;
+    background: #f44336;
+    padding: 27px 0 0 160px;
+    text-align: left;
+    margin: 31px auto 49px;
+}
+
+.order:hover {
+    background: url(../img/arrow_white.png) no-repeat 334px 27px #f44336;
+}
+
+.offer h1 {
+    color: #212121;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 23px;
+    margin-top: 50px;
+}
+
+.offer h3 {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #e53935;
+    letter-spacing: 1.8px;
+    margin-bottom: 36px;
+}
+
+.offer .sm,
+.offer .big {
+    display: inline-block;
+}
+
+.offer .sm {
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 48.02px;
+    margin: 10px;
+}
+
+.offer .big {
+    margin: 0 10px;
+    font-weight: 300;
+    font-size: 72px;
+    line-height: 0;
+}
+
+.offer .text {
+    width: 499px;
+    height: 270px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.offer p {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.4px;
+    text-align: left;
+}
+
+.block_explore {
+    margin: 145px 98px 120px;
+}
+
+.product {
+    height: 370px;
+    margin: 15px 0;
+    padding: 0;
+}
+
+.product a {
+    width: 370px;
+    height: 370px;
+    padding-top: 40px;
+}
+
+@media (max-width: 1010px) {
+
+    .categories ul {
+        text-align: left;
+    }
+
+    .offer {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+
+}
