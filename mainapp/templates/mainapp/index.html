@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load staticfiles %}
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
 
 
     <title>Main</title>
@@ -17,23 +17,23 @@
 <body>
     <div class="conteiner">
         <div class="header">
-            <a href="/">
-                <img class="logo" src="/static/img/logo.png" alt="Картинка не прогрузилась">
+            <a href="{% url 'main' %}">
+                <img class="logo" src="{% static '/img/logo.png' %}" alt="Картинка не прогрузилась">
             </a>
             <ul class="menu">
-                <li><a href="/">HOME</a></li>
-                <li><a href="/products/">PRODUCTS</a></li>
-                <li><a href="/">HISTORY</a></li>
-                <li><a href="/">SHOWROOM</a></li>
-                <li><a href="/contact/">CONTACT</a></li>
-                <li><a href="/"><img src="/static/img/search.png" alt="search"></a></li>
+                <li><a href="{% url 'main' %}">HOME</a></li>
+                <li><a href="{% url 'products' %}">PRODUCTS</a></li>
+                <li><a href="{% url 'main' %}">HISTORY</a></li>
+                <li><a href="{% url 'main' %}">SHOWROOM</a></li>
+                <li><a href="{% url 'contact' %}">CONTACT</a></li>
+                <li><a href="{% url 'main' %}"><img src="{% static '/img/search.png' %}" alt="search"></a></li>
             </ul>
             <div class="slider-content">
                 <h3>trending</h3>
                 <h1>Fishnet chair</h1>
                 <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black
                     or highly polished chrome.</p>
-                <a class="order" href="/deal/">
+                <a class="order" href="{% url 'deal' %}">
                     order us
                 </a>
             </div>
@@ -45,31 +45,31 @@
                     <div class="col-lg-6">
                         <ul class="menu">
                             <li><a href="">Featured</a></li>
-                            <li><a href="/">New</a></li>
+                            <li><a href="{% url 'main' %}">New</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-6">
-                        <a class="explore" href="/products/">explore all</a>
+                        <a class="explore" href="{% url 'products' %}">explore all</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 product">
-                        <img src="/static/img/product-1.jpg" alt="Картинка не прогрузилась"><a href="/deal/">
+                        <img src="{% static '/img/product-1.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
                         </a></div>
-                    <div class="col-lg-3 product"><img src="/static/img/product-2.jpg" alt="Картинка не прогрузилась"><a href="/deal/">
+                    <div class="col-lg-3 product"><img src="{% static '/img/product-2.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
                         </a></div>
-                    <div class="col-lg-3 product"><img src="/static/img/product-3.jpg" alt="Картинка не прогрузилась"><a href="/deal/">
+                    <div class="col-lg-3 product"><img src="{% static '/img/product-3.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
                         </a></div>
-                    <div class="col-lg-3 product"><img src="/static/img/product-4.jpg" alt="Картинка не прогрузилась"><a href="/deal/">
+                    <div class="col-lg-3 product"><img src="{% static '/img/product-4.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
@@ -80,23 +80,23 @@
 
             <div class="row level_2">
                 <div class="col-lg-6 promo">
-                    <img src="/static/img/promo-img1.jpg" alt="Картинка не прогрузилась">
+                    <img src="{% static '/img/promo-img1.jpg' %}" alt="Картинка не прогрузилась">
                     <div class="slider-content">
                         <h3>exclusive</h3>
                         <h1>Fishnet Chair</h1>
                         <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
-                        <a class="order" href="/deal/">
+                        <a class="order" href="{% url 'deal' %}">
                             order us
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-6 promo">
-                    <img src="/static/img/promo-img.jpg" alt="Картинка не прогрузилась">
+                    <img src="{% static '/img/promo-img.jpg' %}" alt="Картинка не прогрузилась">
                     <div class="slider-content">
                         <h3>exclusive</h3>
                         <h1>Fishnet Chair</h1>
                         <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
-                        <a class="order" href="/deal/">
+                        <a class="order" href="{% url 'deal' %}">
                             order us
                         </a>
                     </div>
@@ -108,31 +108,31 @@
                         <h2>Trending Products</h2>
                     </div>
                     <div class="col-lg-6">
-                        <a class="explore" href="/products/">
+                        <a class="explore" href="{% url 'products' %}">
                             explore all
                         </a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 product">
-                        <img src="/static/img/product-11.jpg" alt="Картинка не прогрузилась">
-                        <a href="/deal/">
+                        <img src="{% static '/img/product-11.jpg' %}" alt="Картинка не прогрузилась">
+                        <a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
                         </a>
                     </div>
                     <div class="col-lg-4 product">
-                        <img src="/static/img/product-21.jpg" alt="Картинка не прогрузилась">
-                        <a href="/deal/">
+                        <img src="{% static '/img/product-21.jpg' %}" alt="Картинка не прогрузилась">
+                        <a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
                         </a>
                     </div>
                     <div class="col-lg-4 product">
-                        <img src="/static/img/product-31.jpg" alt="Картинка не прогрузилась">
-                        <a href="/deal/">
+                        <img src="{% static '/img/product-31.jpg' %}" alt="Картинка не прогрузилась">
+                        <a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
@@ -141,24 +141,24 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-4 product">
-                        <img src="/static/img/product-41.jpg" alt="Картинка не прогрузилась">
-                        <a href="/deal/">
+                        <img src="{% static '/img/product-41.jpg' %}" alt="Картинка не прогрузилась">
+                        <a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
                         </a>
                     </div>
                     <div class="col-lg-4 product">
-                        <img src="/static/img/product-5.jpg" alt="Картинка не прогрузилась">
-                        <a href="/deal/">
+                        <img src="{% static '/img/product-5.jpg' %}" alt="Картинка не прогрузилась">
+                        <a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
                         </a>
                     </div>
                     <div class="col-lg-4 product">
-                        <img src="/static/img/product-6.jpg" alt="Картинка не прогрузилась">
-                        <a href="/deal/">
+                        <img src="{% static '/img/product-6.jpg' %}" alt="Картинка не прогрузилась">
+                        <a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
@@ -168,13 +168,13 @@
             </div>
             <div class="level_4">
                 <div class="slider">
-                    <img src="/static/img/slider.jpg" alt="Картинка не прогрузилась">
+                    <img src="{% static '/img/slider.jpg' %}" alt="Картинка не прогрузилась">
                     <div class="slider-content">
                         <h3>Hot deal</h3>
                         <h1>Fishnet chair</h1>
                         <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black
                             or highly polished chrome.</p>
-                        <a class="order" href="/deal/">
+                        <a class="order" href="{% url 'deal' %}">
                             order us
                         </a>
                     </div>
@@ -183,12 +183,12 @@
             </div>
             <div class="level_5 row">
                 <div class="col-lg-6 promo">
-                    <img src="/static/img/product-1-lg.jpg" alt="Картинка не прогрузилась">
+                    <img src="{% static '/img/product-1-lg.jpg' %}" alt="Картинка не прогрузилась">
                     <div class="slider-content">
                         <h3>exclusive</h3>
                         <h1>Fishnet Chair</h1>
                         <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
-                        <a class="order" href="/deal/">order us</a>
+                        <a class="order" href="{% url 'deal' %}">order us</a>
                     </div>
 
                 </div>
@@ -196,8 +196,8 @@
                     <div class="row">
                         <div class="col-lg-6 right_bar">
                             <div class="product">
-                                <img src="/static/img/product-3-sm.jpg" alt="Картинка не прогрузилась">
-                                <a href="/deal/">
+                                <img src="{% static '/img/product-3-sm.jpg' %}" alt="Картинка не прогрузилась">
+                                <a href="{% url 'deal' %}">
                                     <div class="ar_in">
                                     </div>
                                     <h3>Fishnet Chair</h3>
@@ -206,7 +206,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6 right_bar">
-                            <div class="product"><img src="/static/img/product-2-sm.jpg" alt="Картинка не прогрузилась"><a href="/deal/">
+                            <div class="product"><img src="{% static '/img/product-2-sm.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
                                     <div class="ar_in"></div>
                                     <h3>Fishnet Chair</h3>
                                     <p>Seat and back with upholstery made of cold cure foam</p>
@@ -215,14 +215,14 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6 right_bar">
-                            <div class="product"><img src="/static/img/product-4-sm.jpg" alt="Картинка не прогрузилась"><a href="/deal/">
+                            <div class="product"><img src="{% static '/img/product-4-sm.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
                                     <div class="ar_in"></div>
                                     <h3>Fishnet Chair</h3>
                                     <p>Seat and back with upholstery made of cold cure foam</p>
                                 </a></div>
                         </div>
                         <div class="col-lg-6 right_bar">
-                            <div class="product"><img src="/static/img/product-5-sm.jpg" alt="Картинка не прогрузилась"><a href="/deal/">
+                            <div class="product"><img src="{% static '/img/product-5-sm.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
                                     <div class="ar_in"></div>
                                     <h3>Fishnet Chair</h3>
                                     <p>Seat and back with upholstery made of cold cure foam</p>
@@ -238,8 +238,8 @@
                         Discover brands on the go.</h1>
                     <p>Save your favorites and share your style.</p>
                 </div>
-                <a class="first" href=""><img src="/static/img/app-store.jpg" alt="Картинка не прогрузилась"></a>
-                <a href="/"><img src="/static/img/google-play.jpg" alt="Картинка не прогрузилась"></a>
+                <a class="first" href=""><img src="{% static '/img/app-store.jpg' %}" alt="Картинка не прогрузилась"></a>
+                <a href="{% url 'main' %}"><img src="{% static '/img/google-play.jpg' %}" alt="Картинка не прогрузилась"></a>
             </div>
         </div>
         <div class="footer">
@@ -254,14 +254,14 @@
             <div class="useful">
                 <h2>Useful Information</h2>
                 <ul>
-                    <li><a href="/">Sales terms</a></li>
-                    <li><a href="/">Customer care</a></li>
-                    <li><a href="/">Delivery</a></li>
+                    <li><a href="{% url 'main' %}">Sales terms</a></li>
+                    <li><a href="{% url 'main' %}">Customer care</a></li>
+                    <li><a href="{% url 'main' %}">Delivery</a></li>
                 </ul>
                 <ul>
-                    <li><a href="/">Architect accounts</a></li>
-                    <li><a href="/">Careers</a></li>
-                    <li><a href="/">Exchanges & returns</a></li>
+                    <li><a href="{% url 'main' %}">Architect accounts</a></li>
+                    <li><a href="{% url 'main' %}">Careers</a></li>
+                    <li><a href="{% url 'main' %}">Exchanges & returns</a></li>
                 </ul>
             </div>
             <div class="lets_stay">
@@ -272,8 +272,8 @@
             <div class="copyright">
                 <p>© Copyright - INTERIOR 2016. All Rights Reserved.</p>
             </div>
-            <div class="social"><img src="/static/img/social-links.png" alt="Картинка не прогрузилась"></div>
-            <div class="terms"><a href="/">Terms & Conditions / Privacy policy & Cookies</a></div>
+            <div class="social"><img src="{% static '/img/social-links.png' %}" alt="Картинка не прогрузилась"></div>
+            <div class="terms"><a href="{% url 'main' %}">Terms & Conditions / Privacy policy & Cookies</a></div>
         </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
