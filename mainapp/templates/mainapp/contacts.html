@@ -1,31 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style_contacts.css">
-    <title>Contacts</title>
-</head>
-
-<body>
-    <div class="conteiner">
-        <div class="header">
-            <a href="/">
-                <img class="logo" src="/static/img/logo.png" alt="Картинка не прогрузилась">
-            </a>
-            <ul class="menu">
-                <li><a href="/">HOME</a></li>
-                <li><a href="/products/">PRODUCTS</a></li>
-                <li><a href="/">HISTORY</a></li>
-                <li><a href="/">SHOWROOM</a></li>
-                <li><a href="/contact/">CONTACT</a></li>
-                <li><a href="/"><img src="/static/img/search.png" alt="search"></a></li>
-            </ul>
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+{% block css %}
+    {{ block.super}}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style_contacts.css' %}">
+{% endblock %}
+{% block header %}
+    {{block.super}}
             <h1>Contact Us</h1>
-        </div>
+{% endblock %}
 
-        <div class="content">
+{% block content %}
             <div class="block_3">
                 <img src="/static/img/point.png" alt="Картинка не прогрузилась">
                 <h1>California</h1>
@@ -54,39 +38,4 @@
                 <h2>Address:</h2>
                 <p>12 W 1st St, 90001 Los Angeles, California</p>
             </div>
-        </div>
-        <div class="footer">
-            <div class="contact">
-                <h2>Contact Us</h2>
-                <p>132A Bridge Road Richmond VIC
-                    Australia.
-                </p>
-                <p>Talk to us on 1300 132
-                    info@interior.com</p>
-            </div>
-            <div class="useful">
-                <h2>Useful Information</h2>
-                <ul>
-                    <li><a href="/">Sales terms</a></li>
-                    <li><a href="/">Customer care</a></li>
-                    <li><a href="/">Delivery</a></li>
-                </ul>
-                <ul>
-                    <li><a href="/">Architect accounts</a></li>
-                    <li><a href="/">Careers</a></li>
-                    <li><a href="/">Exchanges & returns</a></li>
-                </ul>
-            </div>
-            <div class="lets_stay">
-                <h2>Let’s Stay in Touch!</h2>
-                <p>Suscribe to know about our latest news, products and special offers just for suscribers.</p>
-                <input class="form" type="text" value="your email address">
-            </div>
-            <div class="copyright">
-                <p>© Copyright - INTERIOR 2016. All Rights Reserved.</p>
-            </div>
-            <div class="social"><img src="/static/img/social-links.png" alt="Картинка не прогрузилась"></div>
-            <div class="terms"><a href="/">Terms & Conditions / Privacy policy & Cookies</a></div>
-        </div>
-    </div>
-</body></html>
+{% endblock %}
