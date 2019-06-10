@@ -5,16 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{% static '/css/style_deals.css' %}">
 {% endblock %}
 {% block content %}
-            <div class="categories">
-                <ul>
-                    <li><a href="/products/">All</a></li>
-                    <li><a href="/products/">HOME</a></li>
-                    <li><a href="/products/">OFFICE</a></li>
-                    <li><a href="/products/">FURNITURE</a></li>
-                    <li><a href="/products/">MODERN</a></li>
-                    <li><a href="/products/">CLASSIC</a></li>
-                </ul>
-            </div>
+            {% include 'mainapp/includes/inc_sec_menu.html' %}
             <div class="offer row">
                 <div class="col-6">
                     <img src="/static/img/slider1.jpg" alt="Картинка не прогрузилась">

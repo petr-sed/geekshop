@@ -1,0 +1,13 @@
+{% load staticfiles %}
+{% block menu %}
+    <div class="categories">
+                <ul>
+                    <li><a href="{% url 'products' %}">All</a></li>
+                    <li><a href="{% url 'products' %}">HOME</a></li>
+                    <li><a href="{% url 'products' %}">OFFICE</a></li>
+                    <li><a href="{% url 'products' %}">FURNITURE</a></li>
+                    <li><a href="{% url 'products' %}">MODERN</a></li>
+                    <li><a href="{% url 'products' %}">CLASSIC</a></li>
+                </ul>
+    </div>
+{% endblock %}

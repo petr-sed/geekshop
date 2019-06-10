@@ -1,0 +1,11 @@
+{% load staticfiles %}
+{% block menu %}
+    <ul class="menu">
+                    <li><a href="{% url 'main' %}">HOME</a></li>
+                    <li><a href="{% url 'products' %}">PRODUCTS</a></li>
+                    <li><a href="{% url 'main' %}">HISTORY</a></li>
+                    <li><a href="{% url 'main' %}">SHOWROOM</a></li>
+                    <li><a href="{% url 'contact' %}">CONTACT</a></li>
+                    <li><a href="{% url 'main' %}"><img src="{% static '/img/search.png' %}" alt="search"></a></li>
+                </ul>
+{% endblock %}

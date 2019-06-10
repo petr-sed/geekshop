@@ -27,14 +27,7 @@
                 <a href="{% url 'main' %}">
                     <img class="logo" src="{% static '/img/logo.png' %}" alt="Картинка не прогрузилась">
                 </a>
-                <ul class="menu">
-                    <li><a href="{% url 'main' %}">HOME</a></li>
-                    <li><a href="{% url 'products' %}">PRODUCTS</a></li>
-                    <li><a href="{% url 'main' %}">HISTORY</a></li>
-                    <li><a href="{% url 'main' %}">SHOWROOM</a></li>
-                    <li><a href="{% url 'contact' %}">CONTACT</a></li>
-                    <li><a href="{% url 'main' %}"><img src="{% static '/img/search.png' %}" alt="search"></a></li>
-                </ul>
+                {% include 'mainapp/includes/inc_menu.html' %}
             {% endblock %}
         </div>
         <div class="content">
