@@ -1,36 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style_deals.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style_contacts.css">
-    <title>Catalog</title>
-
-</head>
-
-<body>
-    <div class="conteiner">
-        <div class="header">
-            <a href="/">
-                <img class="logo" src="/static/img/logo.png" alt="Картинка не прогрузилась">
-            </a>
-            <ul class="menu">
-                <li><a href="/">HOME</a></li>
-                <li><a href="/products/">PRODUCTS</a></li>
-                <li><a href="/">HISTORY</a></li>
-                <li><a href="/">SHOWROOM</a></li>
-                <li><a href="/contact/">CONTACT</a></li>
-                <li><a href="/"><img src="/static/img/search.png" alt="search"></a></li>
-            </ul>
-            <h1>Our Products Range</h1>
-        </div>
-        <div class="content">
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+{% block css %}
+    {{ block.super}}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style_deals.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style_contacts.css' %}">
+{% endblock %}
+{% block header %}
+    {{block.super}}
+    <h1>Our Products Range</h1>
+{% endblock %}
+{% block content %}
             <div class="categories">
                 <ul>
                     <li><a href="/products/">All</a></li>
@@ -172,44 +151,4 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer">
-            <div class="contact">
-                <h2>Contact Us</h2>
-                <p>132A Bridge Road Richmond VIC
-                    Australia.
-                </p>
-                <p>Talk to us on 1300 132
-                    info@interior.com</p>
-            </div>
-            <div class="useful">
-                <h2>Useful Information</h2>
-                <ul>
-                    <li><a href="/">Sales terms</a></li>
-                    <li><a href="/">Customer care</a></li>
-                    <li><a href="/">Delivery</a></li>
-                </ul>
-                <ul>
-                    <li><a href="/">Architect accounts</a></li>
-                    <li><a href="/">Careers</a></li>
-                    <li><a href="/">Exchanges & returns</a></li>
-                </ul>
-            </div>
-            <div class="lets_stay">
-                <h2>Let’s Stay in Touch!</h2>
-                <p>Suscribe to know about our latest news, products and special offers just for suscribers.</p>
-                <input class="form" type="text" value="your email address">
-            </div>
-            <div class="copyright">
-                <p>© Copyright - INTERIOR 2016. All Rights Reserved.</p>
-            </div>
-            <div class="social"><img src="/static/img/social-links.png" alt="Картинка не прогрузилась"></div>
-            <div class="terms"><a href="/">Terms & Conditions / Privacy policy & Cookies</a></div>
-        </div>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </div>
-</body></html>
+{% endblock %}

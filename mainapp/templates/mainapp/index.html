@@ -1,46 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'mainapp/base.html' %}
 {% load staticfiles %}
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block header %}
+    {{ block.super }}
+    <div class="slider-content">
+        <h3>trending</h3>
+        <h1>Fishnet chair</h1>
+        <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black
+            or highly polished chrome.</p>
+        <a class="order" href="{% url 'deal' %}">
+            order us
+        </a>
+    </div>
+    <div class="navi"></div>
+{% endblock %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
-
-
-    <title>Main</title>
-</head>
-
-<body>
-    <div class="conteiner">
-        <div class="header">
-            <a href="{% url 'main' %}">
-                <img class="logo" src="{% static '/img/logo.png' %}" alt="Картинка не прогрузилась">
-            </a>
-            <ul class="menu">
-                <li><a href="{% url 'main' %}">HOME</a></li>
-                <li><a href="{% url 'products' %}">PRODUCTS</a></li>
-                <li><a href="{% url 'main' %}">HISTORY</a></li>
-                <li><a href="{% url 'main' %}">SHOWROOM</a></li>
-                <li><a href="{% url 'contact' %}">CONTACT</a></li>
-                <li><a href="{% url 'main' %}"><img src="{% static '/img/search.png' %}" alt="search"></a></li>
-            </ul>
-            <div class="slider-content">
-                <h3>trending</h3>
-                <h1>Fishnet chair</h1>
-                <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black
-                    or highly polished chrome.</p>
-                <a class="order" href="{% url 'deal' %}">
-                    order us
-                </a>
-            </div>
-            <div class="navi"></div>
-        </div>
-        <div class="content">
-            <div class="block_explore level_1">
+{% block content %}
+    <div class="block_explore level_1">
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="menu">
@@ -241,44 +216,4 @@
                 <a class="first" href=""><img src="{% static '/img/app-store.jpg' %}" alt="Картинка не прогрузилась"></a>
                 <a href="{% url 'main' %}"><img src="{% static '/img/google-play.jpg' %}" alt="Картинка не прогрузилась"></a>
             </div>
-        </div>
-        <div class="footer">
-            <div class="contact">
-                <h2>Contact Us</h2>
-                <p>132A Bridge Road Richmond VIC
-                    Australia.
-                </p>
-                <p>Talk to us on 1300 132
-                    info@interior.com</p>
-            </div>
-            <div class="useful">
-                <h2>Useful Information</h2>
-                <ul>
-                    <li><a href="{% url 'main' %}">Sales terms</a></li>
-                    <li><a href="{% url 'main' %}">Customer care</a></li>
-                    <li><a href="{% url 'main' %}">Delivery</a></li>
-                </ul>
-                <ul>
-                    <li><a href="{% url 'main' %}">Architect accounts</a></li>
-                    <li><a href="{% url 'main' %}">Careers</a></li>
-                    <li><a href="{% url 'main' %}">Exchanges & returns</a></li>
-                </ul>
-            </div>
-            <div class="lets_stay">
-                <h2>Let’s Stay in Touch!</h2>
-                <p>Suscribe to know about our latest news, products and special offers just for suscribers.</p>
-                <input class="form" type="text" value="your email address">
-            </div>
-            <div class="copyright">
-                <p>© Copyright - INTERIOR 2016. All Rights Reserved.</p>
-            </div>
-            <div class="social"><img src="{% static '/img/social-links.png' %}" alt="Картинка не прогрузилась"></div>
-            <div class="terms"><a href="{% url 'main' %}">Terms & Conditions / Privacy policy & Cookies</a></div>
-        </div>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </div>
-</body></html>
+{% endblock %}
