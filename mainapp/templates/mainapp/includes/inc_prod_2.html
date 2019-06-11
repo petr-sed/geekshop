@@ -1,0 +1,28 @@
+{% load staticfiles %}
+{% block prod_2 %}
+    {% for prod in
+
+             <div class="col-lg-6 promo">
+                    <img src="{% static '/img/promo-img1.jpg' %}" alt="Картинка не прогрузилась">
+                    <div class="slider-content">
+                        <h3>exclusive</h3>
+                        <h1>Fishnet Chair</h1>
+                        <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
+                        <a class="order" href="{% url 'deal' %}">
+                            order us
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 promo">
+                    <img src="{% static '/img/promo-img.jpg' %}" alt="Картинка не прогрузилась">
+                    <div class="slider-content">
+                        <h3>exclusive</h3>
+                        <h1>Fishnet Chair</h1>
+                        <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
+                        <a class="order" href="{% url 'deal' %}">
+                            order us
+                        </a>
+                    </div>
+                </div>
+
+{% endblock %}
