@@ -15,7 +15,11 @@
 
     <title>
         {% block title %}
-            {{title|title}}
+            {% for key, value in titles.items %}
+                {% if key == request.resolver_match.url_name %}
+                    {{ value }}
+                {% endif %}
+            {% endfor %}
         {% endblock %}
     </title>
 </head>
