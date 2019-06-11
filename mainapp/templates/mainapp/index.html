@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="block_explore level_1">
+            <div class="block_explore level_1">
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="menu">
@@ -51,31 +51,8 @@
                         </a></div>
                 </div>
             </div>
-
-
             <div class="row level_2">
-                <div class="col-lg-6 promo">
-                    <img src="{% static '/img/promo-img1.jpg' %}" alt="Картинка не прогрузилась">
-                    <div class="slider-content">
-                        <h3>exclusive</h3>
-                        <h1>Fishnet Chair</h1>
-                        <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
-                        <a class="order" href="{% url 'deal' %}">
-                            order us
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 promo">
-                    <img src="{% static '/img/promo-img.jpg' %}" alt="Картинка не прогрузилась">
-                    <div class="slider-content">
-                        <h3>exclusive</h3>
-                        <h1>Fishnet Chair</h1>
-                        <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
-                        <a class="order" href="{% url 'deal' %}">
-                            order us
-                        </a>
-                    </div>
-                </div>
+                {% include 'mainapp/includes/inc_prod_2.html' %}
             </div>
             <div class="level_3 block_explore">
                 <div class="row">

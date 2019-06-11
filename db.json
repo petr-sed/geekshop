@@ -5,12 +5,16 @@
         {"href": "main", "name": "HISTORY"},
         {"href": "main", "name": "SHOWROOM"},
         {"href": "contact", "name": "CONTACT"}
-],
+    ],
     "links_sec_menu" : [
         {"href": "products", "name": "все"},
         {"href": "products", "name": "дом"},
         {"href": "products", "name": "офис"},
         {"href": "products", "name": "модерн"},
         {"href": "products", "name": "классика"}
-]
+    ],
+    "product_2" : [
+        {"name": "fishnet chair", "image": "/img/promo-img1.jpg", "description": "Seat and back with upholstery made of cold cure foam. Steel frame, available in matt"},
+        {"name": "awesome chair", "image": "/img/promo-img.jpg", "description": "Seat and back with upholstery made of cold cure foam. Steel frame, available in matt"}
+    ]
 }
