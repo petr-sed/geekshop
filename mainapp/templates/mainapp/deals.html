@@ -8,10 +8,10 @@
             {% include 'mainapp/includes/inc_sec_menu.html' %}
             <div class="offer row">
                 <div class="col-6">
-                    <img src="/static/img/slider1.jpg" alt="Картинка не прогрузилась">
-                    <img class="sm" src="/static/img/controll.jpg" alt="Картинка не прогрузилась">
-                    <img class="sm" src="/static/img/controll11.jpg" alt="Картинка не прогрузилась">
-                    <img class="sm" src="/static/img/controll2.jpg" alt="Картинка не прогрузилась">
+                    <img src="{% static '/img/slider1.jpg' %}" alt="Картинка не прогрузилась">
+                    <img class="sm" src="{% static '/img/controll.jpg' %}" alt="Картинка не прогрузилась">
+                    <img class="sm" src="{% static '/img/controll11.jpg' %}" alt="Картинка не прогрузилась">
+                    <img class="sm" src="{% static '/img/controll2.jpg' %}" alt="Картинка не прогрузилась">
                 </div>
                 <div class="col-6">
 
@@ -20,7 +20,7 @@
                     <div class="sm">$</div>
                     <div class="big">36.7</div>
                     <div class="sm">/sq</div>
-                    <a href="/deal/"><span class="order">Order Us</span></a>
+                    <a href="{% url 'deal' %}"><span class="order">Order Us</span></a>
                     <div class="text">
                         <p>The majesty of Mountains - Ugmonk style.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
@@ -36,31 +36,31 @@
                         <h2>Related Products</h2>
                     </div>
                     <div class="col-lg-6">
-                        <a class="explore" href="/products/">explore all</a>
+                        <a class="explore" href="{% url 'products' %}">explore all</a>
                     </div>
                 </div>
 
 
                 <div class="trends row">
                     <div class="product col-lg-4">
-                        <img src="/static/img/product-11.jpg" alt="Картинка не прогрузилась">
-                        <a href="/deal/">
+                        <img src="{% static '/img/product-11.jpg' %}" alt="Картинка не прогрузилась">
+                        <a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
                         </a>
                     </div>
                     <div class="product col-lg-4">
-                        <img src="/static/img/product-21.jpg" alt="Картинка не прогрузилась">
-                        <a href="/deal/">
+                        <img src="{% static '/img/product-21.jpg' %}" alt="Картинка не прогрузилась">
+                        <a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
                         </a>
                     </div>
                     <div class="product col-lg-4">
-                        <img src="/static/img/product-31.jpg" alt="Картинка не прогрузилась">
-                        <a href="/deal/">
+                        <img src="{% static '/img/product-31.jpg' %}" alt="Картинка не прогрузилась">
+                        <a href="{% url 'deal' %}">
                             <div class="ar_in"></div>
                             <h3>Fishnet Chair</h3>
                             <p>Seat and back with upholstery made of cold cure foam</p>
