@@ -1,22 +1,13 @@
 from django.shortcuts import render
+import json
 
 # Create your views here.
 
-links_menu = [
-    {'href': 'main', 'name': 'HOME'},
-    {'href': 'products', 'name': 'PRODUCTS'},
-    {'href': 'main', 'name': 'HISTORY'},
-    {'href': 'main', 'name': 'SHOWROOM'},
-    {'href': 'contact', 'name': 'CONTACT'},
-]
+with open("db.json", "r", encoding='utf-8') as read_file:
+    data = json.load(read_file)
 
-links_sec_menu = [
-    {'href': 'products', 'name': 'все'},
-    {'href': 'products', 'name': 'дом'},
-    {'href': 'products', 'name': 'офис'},
-    {'href': 'products', 'name': 'модерн'},
-    {'href': 'products', 'name': 'классика'},
-]
+links_menu = data['links_menu']
+links_sec_menu = data['links_sec_menu']
 
 def main(request):
     content = {'links_menu': links_menu, 'title': 'title'}

@@ -36,37 +36,39 @@
             {% endblock %}
         </div>
         <div class="footer">
-            <div class="contact">
-                <h2>Contact Us</h2>
-                <p>132A Bridge Road Richmond VIC
-                    Australia.
-                </p>
-                <p>Talk to us on 1300 132
-                    info@interior.com</p>
-            </div>
-            <div class="useful">
-                <h2>Useful Information</h2>
-                <ul>
-                    <li><a href="{% url 'main' %}">Sales terms</a></li>
-                    <li><a href="{% url 'main' %}">Customer care</a></li>
-                    <li><a href="{% url 'main' %}">Delivery</a></li>
-                </ul>
-                <ul>
-                    <li><a href="{% url 'main' %}">Architect accounts</a></li>
-                    <li><a href="{% url 'main' %}">Careers</a></li>
-                    <li><a href="{% url 'main' %}">Exchanges & returns</a></li>
-                </ul>
-            </div>
-            <div class="lets_stay">
-                <h2>Let’s Stay in Touch!</h2>
-                <p>Suscribe to know about our latest news, products and special offers just for suscribers.</p>
-                <input class="form" type="text" value="your email address">
-            </div>
-            <div class="copyright">
-                <p>© Copyright - INTERIOR 2016. All Rights Reserved.</p>
-            </div>
-            <div class="social"><img src="{% static '/img/social-links.png' %}" alt="Картинка не прогрузилась"></div>
-            <div class="terms"><a href="{% url 'main' %}">Terms & Conditions / Privacy policy & Cookies</a></div>
+            {% block footer %}
+                <div class="contact">
+                    <h2>Contact Us</h2>
+                    <p>132A Bridge Road Richmond VIC
+                        Australia.
+                    </p>
+                    <p>Talk to us on 1300 132
+                        info@interior.com</p>
+                </div>
+                <div class="useful">
+                    <h2>Useful Information</h2>
+                    <ul>
+                        <li><a href="{% url 'main' %}">Sales terms</a></li>
+                        <li><a href="{% url 'main' %}">Customer care</a></li>
+                        <li><a href="{% url 'main' %}">Delivery</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="{% url 'main' %}">Architect accounts</a></li>
+                        <li><a href="{% url 'main' %}">Careers</a></li>
+                        <li><a href="{% url 'main' %}">Exchanges & returns</a></li>
+                    </ul>
+                </div>
+                <div class="lets_stay">
+                    <h2>Let’s Stay in Touch!</h2>
+                    <p>Suscribe to know about our latest news, products and special offers just for suscribers.</p>
+                    <input class="form" type="text" value="your email address">
+                </div>
+                <div class="copyright">
+                    <p>© Copyright - INTERIOR 2016. All Rights Reserved.</p>
+                </div>
+                <div class="social"><img src="{% static '/img/social-links.png' %}" alt="Картинка не прогрузилась"></div>
+                <div class="terms"><a href="{% url 'main' %}">Terms & Conditions / Privacy policy & Cookies</a></div>
+            {% endblock %}
         </div>
         {% block js %}
             <!-- Optional JavaScript -->
