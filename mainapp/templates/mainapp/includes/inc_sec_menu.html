@@ -1,13 +1,16 @@
 {% load staticfiles %}
 {% block menu %}
     <div class="categories">
-                <ul>
-                    <li><a href="{% url 'products' %}">All</a></li>
-                    <li><a href="{% url 'products' %}">HOME</a></li>
-                    <li><a href="{% url 'products' %}">OFFICE</a></li>
-                    <li><a href="{% url 'products' %}">FURNITURE</a></li>
-                    <li><a href="{% url 'products' %}">MODERN</a></li>
-                    <li><a href="{% url 'products' %}">CLASSIC</a></li>
-                </ul>
+        <ul>
+            {% for link in links_sec_menu %}
+                <li><a href="{% url link.href %}"
+                       class="{% if request.resolver_match.url_name == link.href %}
+                                 active
+                              {% endif %}">
+                       {{ link.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}
