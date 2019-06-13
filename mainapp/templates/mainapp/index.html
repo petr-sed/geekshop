@@ -28,27 +28,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 product">
-                        <img src="{% static '/img/product-1.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
-                            <div class="ar_in"></div>
-                            <h3>Fishnet Chair</h3>
-                            <p>Seat and back with upholstery made of cold cure foam</p>
-                        </a></div>
-                    <div class="col-lg-3 product"><img src="{% static '/img/product-2.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
-                            <div class="ar_in"></div>
-                            <h3>Fishnet Chair</h3>
-                            <p>Seat and back with upholstery made of cold cure foam</p>
-                        </a></div>
-                    <div class="col-lg-3 product"><img src="{% static '/img/product-3.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
-                            <div class="ar_in"></div>
-                            <h3>Fishnet Chair</h3>
-                            <p>Seat and back with upholstery made of cold cure foam</p>
-                        </a></div>
-                    <div class="col-lg-3 product"><img src="{% static '/img/product-4.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
-                            <div class="ar_in"></div>
-                            <h3>Fishnet Chair</h3>
-                            <p>Seat and back with upholstery made of cold cure foam</p>
-                        </a></div>
+                    {% for product in products_4 %}
+                        <div class="col-lg-3 product row_4">
+                            <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
+                                <div class="ar_in"></div>
+                                <h3>{{ product.name }}</h3>
+                                <p>{{ product.short_desc }}</p>
+                            </a></div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="row level_2">
@@ -65,58 +52,22 @@
                         </a>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4 product">
-                        <img src="{% static '/img/product-11.jpg' %}" alt="Картинка не прогрузилась">
-                        <a href="{% url 'deal' %}">
-                            <div class="ar_in"></div>
-                            <h3>Fishnet Chair</h3>
-                            <p>Seat and back with upholstery made of cold cure foam</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 product">
-                        <img src="{% static '/img/product-21.jpg' %}" alt="Картинка не прогрузилась">
-                        <a href="{% url 'deal' %}">
-                            <div class="ar_in"></div>
-                            <h3>Fishnet Chair</h3>
-                            <p>Seat and back with upholstery made of cold cure foam</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 product">
-                        <img src="{% static '/img/product-31.jpg' %}" alt="Картинка не прогрузилась">
-                        <a href="{% url 'deal' %}">
-                            <div class="ar_in"></div>
-                            <h3>Fishnet Chair</h3>
-                            <p>Seat and back with upholstery made of cold cure foam</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 product">
-                        <img src="{% static '/img/product-41.jpg' %}" alt="Картинка не прогрузилась">
-                        <a href="{% url 'deal' %}">
-                            <div class="ar_in"></div>
-                            <h3>Fishnet Chair</h3>
-                            <p>Seat and back with upholstery made of cold cure foam</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 product">
-                        <img src="{% static '/img/product-5.jpg' %}" alt="Картинка не прогрузилась">
-                        <a href="{% url 'deal' %}">
-                            <div class="ar_in"></div>
-                            <h3>Fishnet Chair</h3>
-                            <p>Seat and back with upholstery made of cold cure foam</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 product">
-                        <img src="{% static '/img/product-6.jpg' %}" alt="Картинка не прогрузилась">
-                        <a href="{% url 'deal' %}">
-                            <div class="ar_in"></div>
-                            <h3>Fishnet Chair</h3>
-                            <p>Seat and back with upholstery made of cold cure foam</p>
-                        </a>
-                    </div>
-                </div>
+                    {% for product in products_6 %}
+                        {% if forloop.counter == 1 or forloop.counter == 4 %}
+                            <div class="row">
+                        {% endif %}
+                            <div class="col-lg-4 product row_3">
+                                <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась">
+                                <a href="{% url 'deal' %}">
+                                    <div class="ar_in"></div>
+                                    <h3>{{ product.name }}</h3>
+                                    <p>{{ product.short_desc }}</p>
+                                </a>
+                            </div>
+                        {% if forloop.counter == 3 or forloop.counter == 6 %}
+                           </div>
+                        {% endif %}
+                    {% endfor %}
             </div>
             <div class="level_4">
                 <div class="slider">
@@ -145,43 +96,25 @@
 
                 </div>
                 <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-6 right_bar">
-                            <div class="product">
-                                <img src="{% static '/img/product-3-sm.jpg' %}" alt="Картинка не прогрузилась">
-                                <a href="{% url 'deal' %}">
-                                    <div class="ar_in">
-                                    </div>
-                                    <h3>Fishnet Chair</h3>
-                                    <p>Seat and back with upholstery made of cold cure foam</p>
-                                </a>
+                    {% for product in products_22 %}
+                        {% if forloop.counter == 1 or forloop.counter == 3 %}
+                            <div class="row">
+                        {% endif %}
+                            <div class="col-lg-6 right_bar">
+                                <div class="product row_4">
+                                    <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась">
+                                    <a href="{% url 'deal' %}">
+                                        <div class="ar_in">
+                                        </div>
+                                        <h3>{{ product.name }}</h3>
+                                        <p>{{ product.short_desc }}</p>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 right_bar">
-                            <div class="product"><img src="{% static '/img/product-2-sm.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
-                                    <div class="ar_in"></div>
-                                    <h3>Fishnet Chair</h3>
-                                    <p>Seat and back with upholstery made of cold cure foam</p>
-                                </a></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 right_bar">
-                            <div class="product"><img src="{% static '/img/product-4-sm.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
-                                    <div class="ar_in"></div>
-                                    <h3>Fishnet Chair</h3>
-                                    <p>Seat and back with upholstery made of cold cure foam</p>
-                                </a></div>
-                        </div>
-                        <div class="col-lg-6 right_bar">
-                            <div class="product"><img src="{% static '/img/product-5-sm.jpg' %}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
-                                    <div class="ar_in"></div>
-                                    <h3>Fishnet Chair</h3>
-                                    <p>Seat and back with upholstery made of cold cure foam</p>
-                                </a></div>
-                        </div>
-                    </div>
-                </div>
+                        {% if forloop.counter == 2 or forloop.counter == 4 %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
             </div>
             <div class="follow">
                 <div class="slider-content">

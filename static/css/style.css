@@ -184,9 +184,21 @@ li {
   margin: 0px;
   padding: 0;
 }
-.product img {
+
+.product img{
   position: absolute;
 }
+
+.row_4 img {
+  width: 270px;
+  height: 270px;
+}
+
+.row_3 img{
+  width: 370px;
+  height: 370px;
+}
+
 .product a {
   position: absolute;
   z-index: 0;
