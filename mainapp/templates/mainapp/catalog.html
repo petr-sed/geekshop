@@ -11,110 +11,22 @@
 {% endblock %}
 {% block content %}
             {% include 'mainapp/includes/inc_sec_menu.html' %}
-             <div class="trends row">
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-11.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-21.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-31.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-            </div>
-            <div class="trends row">
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-11.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-21.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-31.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-            </div>
-            <div class="trends row">
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-11.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-21.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-31.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-            </div>
-            <div class="trends row">
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-11.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-21.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-                <div class="product col-lg-4">
-                    <img src="/static/img/product-31.jpg" alt="Картинка не прогрузилась">
-                    <a href="/deal/">
-                        <div class="ar_in"></div>
-                        <h3>Fishnet Chair</h3>
-                        <p>Seat and back with upholstery made of cold cure foam</p>
-                    </a>
-                </div>
-            </div>
+            {% for product in products_12 %}
+                {% if forloop.counter == 1 or forloop.counter|add:2|divisibleby:3 %}
+                    <div class="trends row row_3">
+                {% endif %}
+                    <div class="product col-lg-4">
+                        <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась">
+                        <a href="/deal/">
+                            <div class="ar_in"></div>
+                            <h3>{{ product.name }}</h3>
+                            <p>{{ product.short_desc }}</p>
+                        </a>
+                    </div>
+                {% if forloop.counter|divisibleby:3 %}
+                    </div>
+                {% endif %}
+            {% endfor %}
             <div class="row ring">
                 <a href="/"><img src="/static/img/ring.png" alt="Картинка не прогрузилась"></a>
             </div>
