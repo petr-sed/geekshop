@@ -8,7 +8,7 @@ with open("db.json", "r", encoding='utf-8') as read_file:
     data = json.load(read_file)
 
 links_menu = data['links_menu']
-links_sec_menu = data['links_sec_menu']
+links_sec_menu = ProductCategory.objects.all()
 product_2 = data['product_2']
 titles = data['titles']
 
