@@ -27,14 +27,17 @@ def main(request):
 def products(request, pk=None):
     if pk is not None:
         products = Product.objects.filter(category_id=pk)
+        media = '../../media/'
     else:
         products = Product.objects.all()[:12]
+        media = '../media/'
     content = {
                'links_menu': links_menu,
                'links_sec_menu': links_sec_menu,
                'products_12': products,
                'titles': titles,
-               'product_2': product_2
+               'product_2': product_2,
+               'media': media,
                }
     return render(request, 'mainapp/catalog.html', content)
 
