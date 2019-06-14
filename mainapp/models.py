@@ -27,4 +27,4 @@ class Product(models.Model):
     quantity = models.PositiveIntegerField(verbose_name='в наличии', default=0)
 
     def __str__(self):
-        return "{} ({})".format(self.name, self.category.name)
+        return "{} ({})".format(self.name, self.category.id)

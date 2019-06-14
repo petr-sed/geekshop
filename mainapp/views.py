@@ -24,12 +24,15 @@ def main(request):
               }
     return render(request, 'mainapp/index.html', content)
 
-def products(request):
-    products = Product.objects.all()
+def products(request, pk=None):
+    if pk is not None:
+        products = Product.objects.filter(category_id=pk)
+    else:
+        products = Product.objects.all()[:12]
     content = {
                'links_menu': links_menu,
                'links_sec_menu': links_sec_menu,
-               'products_12': products[:12],
+               'products_12': products,
                'titles': titles,
                'product_2': product_2
                }
