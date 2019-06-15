@@ -20,6 +20,7 @@ body {
 a {
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: none;
 }
@@ -446,6 +447,11 @@ li {
   color: #212121;
   text-decoration: underline solid black;
 }
+
+a.active{
+  color: red;
+}
+
 @media (max-width: 1010px) {
   .header,
   .conteiner,
