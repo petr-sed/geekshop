@@ -12,7 +12,7 @@
 {% block content %}
             {% include 'mainapp/includes/inc_sec_menu.html' %}
             {% for product in products_12 %}
-                {% if forloop.counter == 1 or forloop.counter|add:2|divisibleby:3 %}
+                {% if forloop.counter|add:2|divisibleby:3 %}
                     <div class="trends row row_3">
                 {% endif %}
                     <div class="product col-lg-4">
@@ -23,7 +23,7 @@
                             <p>{{ product.short_desc }}</p>
                         </a>
                     </div>
-                {% if forloop.counter|divisibleby:3 %}
+                {% if forloop.counter|divisibleby:3 or forloop.last %}
                     </div>
                 {% endif %}
             {% endfor %}
