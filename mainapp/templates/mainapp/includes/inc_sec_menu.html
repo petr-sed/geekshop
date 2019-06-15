@@ -3,8 +3,8 @@
     <div class="categories">
         <ul>
             {% for link in links_sec_menu %}
-                <li><a href="/products/{{ link.id }}"
-                       class="{% if request.resolver_match.url_name == link.href %}
+                <li><a href="{% url 'products:category' link.id %}"
+                       class="{% if request.resolver_match.url_name == link.id %}
                                  active
                               {% endif %}">
                        {{ link.name }}
