@@ -4,7 +4,7 @@
         <ul>
             {% for link in links_sec_menu %}
                 <li><a href="{% url 'products:category' link.id %}"
-                       class="{% if request.resolver_match.url_name == link.id %}
+                       class="{% if request.resolver_match.kwargs.pk == link.id %}
                                  active
                               {% endif %}">
                        {{ link.name }}
