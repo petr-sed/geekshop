@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from .models import ShopUser
 from django.views.generic.edit import UpdateView
 from django.contrib import auth
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from .forms import ShopUserRegisterForm
 
 # Create your views here.
@@ -33,7 +33,10 @@ def login(request):
 
 
 class EditView(UpdateView):
-    pass
+    model = ShopUser
+    template_name = 'authapp/register.html'
+    fields = 'username', 'first_name', 'email', 'age', 'avatar'
+    success_url = reverse_lazy('main')
 
 def logout(request):
     auth.logout(request)
