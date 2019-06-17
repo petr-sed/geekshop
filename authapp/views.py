@@ -25,4 +25,5 @@ class EditView(UpdateView):
     pass
 
 def logout(request):
-    return render(request, 'authapp/logout.html')
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('main'))
