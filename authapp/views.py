@@ -13,8 +13,10 @@ def login(request):
     if request.method == 'POST':
         unm = request.POST.get('login')
         password = request.POST.get('password')
-        auth.authenticate(username=unm, password=password)
-        return HttpResponseRedirect(reverse('main'))
+        user = auth.authenticate(username=unm, password=password)
+        if user.is_active:
+            auth.login(request, user)
+            return HttpResponseRedirect(reverse('main'))
 
     return render(request, 'authapp/login.html')
 
