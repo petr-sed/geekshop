@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'authapp/base.html' %}
 
-</body>
-</html>
+{% block content %}
+    <form class=form-group action='{% url "auth:login" %}' method="POST">
+        {% csrf_token %}
+        <input name="login" placeholder="Логин"><br>
+        <input name="password" type="password" placeholder="Пароль"><br>
+        <button type="submit">Войти</button>
+    </form>
+{% endblock %}
+
