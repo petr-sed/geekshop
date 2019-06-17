@@ -32,7 +32,8 @@
             {% else %}
                 <h2>Пользователь не авторизован</h2>
             {% endif %}
-            <input type="button" >
+            <a href="{% url 'auth:logout' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">logout</a>
+            <a href="{% url 'auth:login' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">login</a>
         </div>
         <div class="header">
             {% block header %}
