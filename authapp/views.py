@@ -7,8 +7,11 @@ from django.views.generic.edit import UpdateView
 def register(request):
     return render(request, 'authapp/register.html')
 
-def login(reauest):
-    return render(reauest, 'authapp/login.html')
+def login(request):
+    if request.method == 'POST':
+        print(request.POST)
+    return render(request, 'authapp/login.html')
+
 
 class EditView(UpdateView):
     pass
