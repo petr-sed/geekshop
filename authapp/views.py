@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from .models import ShopUser
 from django.views.generic.edit import UpdateView
+from django.contrib import auth
+from django.urls import reverse
 
 # Create your views here.
 
@@ -9,7 +11,11 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        print(request.POST)
+        unm = request.POST.get('login')
+        password = request.POST.get('password')
+        auth.authenticate(username=unm, password=password)
+        return HttpResponseRedirect(reverse('main'))
+
     return render(request, 'authapp/login.html')
 
 
