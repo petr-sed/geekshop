@@ -3,18 +3,29 @@ from .models import ShopUser
 from django.views.generic.edit import UpdateView
 from django.contrib import auth
 from django.urls import reverse
+from .forms import ShopUserRegisterForm
 
 # Create your views here.
 
 def register(request):
-    return render(request, 'authapp/register.html')
+    if request.method == 'POST':
+        register_form = ShopUserRegisterForm(request.POST, request.FILES)
+        if register_form.is_valid():
+            user = register_form.save()
+            auth.login(request, user)
+            return HttpResponseRedirect(reverse('main'))
+    else:
+        register_form = ShopUserRegisterForm
+
+    context = {'form': register_form}
+    return render(request, 'authapp/register.html', context)
 
 def login(request):
     if request.method == 'POST':
         unm = request.POST.get('login')
         password = request.POST.get('password')
         user = auth.authenticate(username=unm, password=password)
-        if user.is_active:
+        if user and user.is_active:
             auth.login(request, user)
             return HttpResponseRedirect(reverse('main'))
 
