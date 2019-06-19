@@ -29,11 +29,15 @@
         <div class="user">
             {% if request.user.is_authenticated %}
                 <h2>Пользователь: {{ request.user.username|title }}</h2>
+                <a href="{% url 'auth:logout' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">logout</a>
+                <a href="{% url 'auth:edit' request.user.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">edit profile</a>
+
             {% else %}
                 <h2>Пользователь не авторизован</h2>
+                <a href="{% url 'auth:login' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">login</a>
+                <a href="{% url 'auth:register' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">create user</a>
             {% endif %}
-            <a href="{% url 'auth:logout' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">logout</a>
-            <a href="{% url 'auth:login' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">login</a>
+
         </div>
         <div class="header">
             {% block header %}
