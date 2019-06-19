@@ -15,7 +15,7 @@ def register(request):
             auth.login(request, user)
             return HttpResponseRedirect(reverse('main'))
     else:
-        register_form = ShopUserRegisterForm
+        register_form = ShopUserRegisterForm()
 
     context = {'form': register_form}
     return render(request, 'authapp/register.html', context)
@@ -34,7 +34,7 @@ def login(request):
 
 class EditView(UpdateView):
     model = ShopUser
-    template_name = 'authapp/register.html'
+    template_name = 'authapp/edit.html'
     fields = 'username', 'first_name', 'email', 'age', 'avatar'
     success_url = reverse_lazy('main')
 
