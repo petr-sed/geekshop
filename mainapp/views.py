@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import json
 from .models import Product, ProductCategory
 from basketapp.models import Basket
+
 
 # Create your views here.
 
@@ -19,13 +20,14 @@ def main(request):
                 'products_4': products[:4],
                 'products_6': products[4:10],
                 'products_22': products[10:],
-                'product_2': product_2
-              }
+                'product_2': product_2,
+            }
     return render(request, 'mainapp/index.html', content)
 
 def products(request, pk=None):
-    if pk is not None:
-        products = Product.objects.filter(category_id=pk)
+    if pk:
+        category = get_object_or_404(ProductCategory, pk=pk)
+        products = Product.objects.filter(category=category)
         media = '../../media/'
     else:
         products = Product.objects.all()[:12]
