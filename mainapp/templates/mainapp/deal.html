@@ -17,7 +17,11 @@
                     <div class="sm">$</div>
                     <div class="big">{{ product.price }}</div>
                     <div class="sm">/sq</div>
-                    <a href=""><span class="order">Add to cart</span></a>
+                    <a href="{% url 'basket:add' product.pk %}"><span class="order">Add to cart</span></a>
+                    <h3>Now in cart: </h3>
+                    <h3>
+                        {% if basket %} {{ basket|length }} {% endif %}
+                    </h3>
                     <div class="text">
                         <p>{{ product.short_desc }}</p>
                         <p>{{ product.description }}</p>

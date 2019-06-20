@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import json
 from .models import Product, ProductCategory
+from basketapp.models import Basket
 
 # Create your views here.
 
@@ -47,11 +48,15 @@ def contact(request):
 def deal(request, pk=None):
     product = Product.objects.filter(id=pk).first()
     products = Product.objects.all()[:3]
+    basket = []
+    if request.user.is_authenticated:
+        basket = Basket.objects.filter(user=request.user)
     content = {
                 'links_sec_menu': links_sec_menu,
                 'titles': titles,
                 'product_2': product_2,
-                'product' : product,
+                'product': product,
                 'products': products,
+                'basket': basket
               }
     return render(request, 'mainapp/deal.html', content)
