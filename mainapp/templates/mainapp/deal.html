@@ -1,0 +1,56 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+{% block css %}
+    {{ block.super}}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style_deals.css' %}">
+{% endblock %}
+{% block content %}
+            {% include 'mainapp/includes/inc_sec_menu.html' %}
+            <div class="offer row">
+                <div class="col-6">
+                    <img src="../../media/{{ product.image }}" alt="Картинка не прогрузилась">
+                </div>
+                <div class="col-6">
+
+                    <h1>{{ product.name }}</h1>
+                    <h3>Hot Deal</h3>
+                    <div class="sm">$</div>
+                    <div class="big">{{ product.price }}</div>
+                    <div class="sm">/sq</div>
+                    <a href=""><span class="order">Add to cart</span></a>
+                    <div class="text">
+                        <p>{{ product.short_desc }}</p>
+                        <p>{{ product.description }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="level_3 block_explore">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>Trending Products</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="explore" href="{% url 'products:index' %}">
+                            explore all
+                        </a>
+                    </div>
+                </div>
+                    {% for product in products %}
+                        {% if forloop.counter == 1 or forloop.counter == 4 %}
+                            <div class="row">
+                        {% endif %}
+                            <div class="col-lg-4 product row_3">
+                                <img src="../../media/{{ product.image }}" alt="Картинка не прогрузилась">
+                                <a href="{% url 'deal' product.id %}">
+                                    <div class="ar_in"></div>
+                                    <h3>{{ product.name }}</h3>
+                                    <p>{{ product.short_desc }}</p>
+                                </a>
+                            </div>
+                        {% if forloop.counter == 3 or forloop.counter == 6 %}
+                           </div>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+{% endblock %}

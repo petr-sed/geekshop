@@ -44,10 +44,14 @@ def contact(request):
               }
     return render(request, 'mainapp/contacts.html', content)
 
-def deal(request):
+def deal(request, pk=None):
+    product = Product.objects.filter(id=pk).first()
+    products = Product.objects.all()[:3]
     content = {
                 'links_sec_menu': links_sec_menu,
                 'titles': titles,
-                'product_2': product_2
+                'product_2': product_2,
+                'product' : product,
+                'products': products,
               }
-    return render(request, 'mainapp/deals.html', content)
+    return render(request, 'mainapp/deal.html', content)

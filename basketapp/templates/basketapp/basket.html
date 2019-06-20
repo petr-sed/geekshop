@@ -7,7 +7,7 @@
 {% endblock %}
 {% block header %}
     {{block.super}}
-    <h1>Our Products Range</h1>
+    <h1>You cart</h1>
 {% endblock %}
 {% block content %}
             {% include 'mainapp/includes/inc_sec_menu.html' %}
@@ -17,7 +17,7 @@
                 {% endif %}
                     <div class="product col-lg-4">
                         <img src="{{ media }}{{ product.image }}" alt="Картинка не прогрузилась">
-                        <a href="{% url 'deal'  %}">
+                        <a href="/deal/">
                             <div class="ar_in"></div>
                             <h3>{{ product.name }}</h3>
                             <p>{{ product.short_desc }}</p>
