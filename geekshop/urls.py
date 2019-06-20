@@ -28,6 +28,7 @@ urlpatterns = [
     path('contact/', mainapp.contact, name='contact'),
     path('auth/', include('authapp.urls', namespace='auth')),
     path('admin/', admin.site.urls),
+    path('basket/', include('basketapp.url', namespace='basket')),
     path('deal/', mainapp.deal, name='deal'),
 ]
 
