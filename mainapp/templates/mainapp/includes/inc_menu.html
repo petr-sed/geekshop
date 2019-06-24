@@ -25,6 +25,14 @@
                     CONTACTS
                 </a>
             </li>
+            <li>
+                <a href="{% url 'basket:view' %}"
+                    class="{% if request.resolver_match.url_name == 'basket' %}
+                        active
+                        {% endif %}">
+                    BASKET
+                </a>
+            </li>
         <li><a href="{% url 'main' %}"><img src="{% static '/img/search.png' %}" alt="search"></a></li>
     </ul>
 {% endblock %}

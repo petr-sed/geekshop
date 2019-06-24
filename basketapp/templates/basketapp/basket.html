@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load staticfiles %}
+{% load custom_tags %}
 {% block css %}
     {{ block.super}}
     <link rel="stylesheet" type="text/css" href="{% static '/css/style_deals.css' %}">
@@ -23,18 +24,18 @@
         </tr>
       </thead>
       <tbody>
-       {% for product in basket %}
+       {% for prod in basket %}
         <tr>
-          <th scope="row">{{ product.id }}</th>
-          <td><img src="../media/{{ product.product.image }}" alt="Картинка не прогрузилась"></td>
-          <td>{{ product.product.name }}</td>
-          <td>{{ product.product.price }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>{{ product.cost }}</td>
-          <td><a href="">Delete from cart</a> </td>
+          <th scope="row">{{ prod.id }}</th>
+          <td><img src="../media/{{ prod.product.image }}" alt="Картинка не прогрузилась"></td>
+          <td>{{ prod.product.name }}</td>
+          <td>{{ prod.product.price }}</td>
+          <td><input type="number" min="0" name="item.pk" value="{{ prod.quantity }}"></td>
+          <td>{{ prod.cost }}</td>
+          <td><a href="{% url 'basket:remove' prod.pk %}">Delete from cart</a> </td>
         </tr>
        {% endfor %}
       </tbody>
     </table>
-    <h3>Final price: {{ final_price }}</h3>
+    <h3>Final price: {{ request.user|basket_total_cost }}</h3>
 {% endblock %}
