@@ -21,15 +21,19 @@ def register(request):
     return render(request, 'authapp/register.html', context)
 
 def login(request):
+
     if request.method == 'POST':
         unm = request.POST.get('login')
         password = request.POST.get('password')
+        next = request.POST.get('next')
         user = auth.authenticate(username=unm, password=password)
         if user and user.is_active:
             auth.login(request, user)
-            return HttpResponseRedirect(reverse('main'))
-
-    return render(request, 'authapp/login.html')
+            if next:
+                return HttpResponseRedirect(next)
+            else:
+                return HttpResponseRedirect(reverse('main'))
+    return render(request, 'authapp/login.html', {'next': request.GET.get('next')})
 
 
 class EditView(UpdateView):

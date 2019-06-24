@@ -17,12 +17,7 @@
                     <div class="sm">$</div>
                     <div class="big">{{ product.price }}</div>
                     <div class="sm">/sq</div>
-                    {% if request.user.is_authenticated %}
-                        <a href="{% url 'basket:add' product.pk %}"><span class="order">Add to cart</span></a>
-                        <h3>Now in cart: {% if basket %} {{ basket|length }} {% endif %}</h3>
-                    {% else %}
-                        <a href="{% url 'auth:login' %}"><span class="order">Login for shopping</span></a>
-                    {% endif %}
+                    <a href="{% url 'basket:add' product.pk %}"><span class="order">Add to cart</span></a>
                     <div class="text">
                         <p>{{ product.short_desc }}</p>
                         <p>{{ product.description }}</p>
