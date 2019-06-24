@@ -31,11 +31,8 @@
                 <h2>Пользователь: {{ request.user.username|title }}</h2>
                 <a href="{% url 'auth:logout' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">logout</a>
                 <a href="{% url 'auth:edit' request.user.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">edit profile</a>
-<<<<<<< HEAD
-=======
                 <a href="{% url 'basket:view' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">your cart</a>
                 <h3> In cart</h3>
->>>>>>> lesson_5
 
             {% else %}
                 <h2>Пользователь не авторизован</h2>
