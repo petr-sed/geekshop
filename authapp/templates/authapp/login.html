@@ -11,6 +11,9 @@
             <label for="exampleInputPassword1">Password</label>
             <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
+          {% if next %}
+              <input type="hidden" name = "next" value = {{ next }}>
+          {% endif %}
           <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 {% endblock %}
