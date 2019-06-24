@@ -33,7 +33,7 @@
                 <a href="{% url 'auth:logout' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">logout</a>
                 <a href="{% url 'auth:edit' request.user.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">edit profile</a>
                 <a href="{% url 'basket:view' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">your cart</a>
-                <h3> In cart {{ request.user|basket_total_quantity }} fo the amount of {{ request.user|basket_total_cost }}</h3>
+                <h3> In your cart: {{ request.user|basket_total_quantity }} products fo the amount of {{ request.user|basket_total_cost }}</h3>
 
             {% else %}
                 <h2>Пользователь не авторизован</h2>
