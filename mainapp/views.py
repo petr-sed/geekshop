@@ -10,17 +10,19 @@ with open("db.json", "r", encoding='utf-8') as read_file:
     data = json.load(read_file)
 
 links_sec_menu = ProductCategory.objects.all()
-product_2 = data['product_2']
 titles = data['titles']
 
 def main(request):
     products = Product.objects.all()
+    hot_product = []
+    hot_product.append(Product.objects.filter(is_hot=True).order_by('?').first())
+    hot_product.append(Product.objects.filter(is_hot=True).order_by('?').first())
     content = {
                 'titles': titles,
                 'products_4': products[:4],
                 'products_6': products[4:10],
-                'products_22': products[10:],
-                'product_2': product_2,
+                'products_22': products[10:14],
+                'hot_product': hot_product,
             }
     return render(request, 'mainapp/index.html', content)
 
@@ -32,11 +34,14 @@ def products(request, pk=None):
     else:
         products = Product.objects.all()[:12]
         media = '../media/'
+    hot_product = []
+    hot_product.append(Product.objects.filter(is_hot=True).order_by('?').first())
+    hot_product.append(Product.objects.filter(is_hot=True).order_by('?').first())
     content = {
                'links_sec_menu': links_sec_menu,
                'products_12': products,
                'titles': titles,
-               'product_2': product_2,
+               'hot_product': hot_product,
                'media': media,
                }
     return render(request, 'mainapp/catalog.html', content)
@@ -56,7 +61,6 @@ def deal(request, pk=None):
     content = {
                 'links_sec_menu': links_sec_menu,
                 'titles': titles,
-                'product_2': product_2,
                 'product': product,
                 'products': products,
                 'basket': basket
