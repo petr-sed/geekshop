@@ -1,0 +1,45 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+{% block css %}
+    {{ block.super}}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style_deals.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style_contacts.css' %}">
+{% endblock %}
+{% block header %}
+    {{block.super}}
+    <h1>You cart</h1>
+{% endblock %}
+{% block content %}
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total  Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+       {% for product in basket %}
+        <tr>
+          <th scope="row">{{ product.id }}</th>
+          <td><img src="../media/{{ product.product.image }}" alt="Картинка не прогрузилась"></td>
+          <td>{{ product.product.name }}</td>
+          <td>{{ product.product.price }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{% for key, value in total_price.items %}
+                  {% if key == product.product.name %}
+                       {{ value }}
+                  {% endif %}
+               {% endfor %}
+          </td>
+          <td><a href="">Delete from cart</a> </td>
+        </tr>
+       {% endfor %}
+      </tbody>
+    </table>
+    <h3>Final price: {{ final_price }}</h3>
+{% endblock %}

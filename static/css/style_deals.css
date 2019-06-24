@@ -62,13 +62,13 @@
     box-shadow: 0 2px 5px 1px rgba(33, 33, 33, 0.35);
     border-radius: 35px;
     background: #f44336;
-    padding: 27px 0 0 160px;
-    text-align: left;
+    padding: 27px 0 0 0;
+    text-align: center;
     margin: 31px auto 49px;
 }
 
 .order:hover {
-    background: url(../img/arrow_white.png) no-repeat 334px 27px #f44336;
+    background: url(../img/arrow_white.png) no-repeat 400px 27px #f44336;
 }
 
 .offer h1 {

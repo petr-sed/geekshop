@@ -2,7 +2,7 @@
 {%  load static %}
 
 {%  block content %}
-    <form class="form-horizontal" method="post">
+    <form class="form-group" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input class="form-control" type="submit" value="save changes">

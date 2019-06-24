@@ -7,7 +7,7 @@
         <h1>Fishnet chair</h1>
         <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black
             or highly polished chrome.</p>
-        <a class="order" href="{% url 'deal' %}">
+        <a class="order" href="{% url 'products:index' %}">
             order us
         </a>
     </div>
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="menu">
-                            <li><a href="">Featured</a></li>
+                            <li><a href="{% url 'main' %}">Featured</a></li>
                             <li><a href="{% url 'main' %}">New</a></li>
                         </ul>
                     </div>
@@ -30,11 +30,13 @@
                 <div class="row">
                     {% for product in products_4 %}
                         <div class="col-lg-3 product row_4">
-                            <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась"><a href="{% url 'deal' %}">
+                            <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась">
+                            <a href="{% url 'deal' product.id %}">
                                 <div class="ar_in"></div>
                                 <h3>{{ product.name }}</h3>
                                 <p>{{ product.short_desc }}</p>
-                            </a></div>
+                            </a>
+                        </div>
                     {% endfor %}
                 </div>
             </div>
@@ -58,7 +60,7 @@
                         {% endif %}
                             <div class="col-lg-4 product row_3">
                                 <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась">
-                                <a href="{% url 'deal' %}">
+                                <a href="{% url 'deal' product.id %}">
                                     <div class="ar_in"></div>
                                     <h3>{{ product.name }}</h3>
                                     <p>{{ product.short_desc }}</p>
@@ -77,7 +79,7 @@
                         <h1>Fishnet chair</h1>
                         <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black
                             or highly polished chrome.</p>
-                        <a class="order" href="{% url 'deal' %}">
+                        <a class="order" href="{% url 'products:index' %}">
                             order us
                         </a>
                     </div>
@@ -91,7 +93,7 @@
                         <h3>exclusive</h3>
                         <h1>Fishnet Chair</h1>
                         <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
-                        <a class="order" href="{% url 'deal' %}">order us</a>
+                        <a class="order" href="">order us</a>
                     </div>
 
                 </div>
@@ -103,7 +105,7 @@
                             <div class="col-lg-6 right_bar">
                                 <div class="product row_4">
                                     <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась">
-                                    <a href="{% url 'deal' %}">
+                                    <a href="{% url 'deal' product.id %}">
                                         <div class="ar_in">
                                         </div>
                                         <h3>{{ product.name }}</h3>
