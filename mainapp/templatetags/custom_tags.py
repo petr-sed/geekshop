@@ -3,7 +3,7 @@ register = template.Library()
 
 @register.filter
 def basket_total_quantity(user):
-    if user.is_anonymus:
+    if user.is_anonymous:
         return 0
     else:
         basket = user.basket.all()
@@ -11,8 +11,8 @@ def basket_total_quantity(user):
         return total_quantity
 
 @register.filter
-def bascet_total_cost(user):
-    if user.is_anonymus:
+def basket_total_cost(user):
+    if user.is_anonymous:
         return 0
     else:
         basket = user.basket.all()
