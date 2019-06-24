@@ -9,4 +9,9 @@ class Basket(models.Model):
     add_datetime = models.DateTimeField(verbose_name='время', auto_now_add=True)
 
     def __str__(self):
-        return self.user
+        return "{} - {}".format(self.user.username, self.product.name)
+
+    def get_cost(self):
+        return self.quantity * self.product.price
+
+    cost = property(get_cost)
