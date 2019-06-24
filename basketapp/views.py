@@ -8,13 +8,14 @@ def basket(request):
     basket = []
     if request.user.is_authenticated:
         basket = Basket.objects.filter(user=request.user)
-        total_price = {}
+
+        final_price = 0
         for object in basket:
-            total_price[object.product.name] = object.product.price * object.quantity
-        final_price = sum(total_price.values())
+            final_price = final_price + object.cost
+
+
         content = {
             'final_price': final_price,
-            'total_price': total_price,
             'basket': basket,
         }
         return render(request, 'basketapp/basket.html', content)

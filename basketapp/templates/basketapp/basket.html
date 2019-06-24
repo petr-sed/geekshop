@@ -30,12 +30,7 @@
           <td>{{ product.product.name }}</td>
           <td>{{ product.product.price }}</td>
           <td>{{ product.quantity }}</td>
-          <td>{% for key, value in total_price.items %}
-                  {% if key == product.product.name %}
-                       {{ value }}
-                  {% endif %}
-               {% endfor %}
-          </td>
+          <td>{{ product.cost }}</td>
           <td><a href="">Delete from cart</a> </td>
         </tr>
        {% endfor %}
