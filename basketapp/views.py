@@ -4,7 +4,7 @@ from mainapp.models import Product
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 
 @login_required
@@ -44,23 +44,14 @@ def basket_remove(request, pk):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 @login_required
-def basket_edit(request, pk, quantity):
+def basket_edit(request, pk):
     if request.is_ajax():
-        quantity = int(quantity)
-        new_basket_item = Basket.objects.get(pk=int(pk))
-
+        basket_slot = get_object_or_404(Basket, pk=int(pk))
+        quantity = int(request.GET.get('quantity'))
         if quantity > 0:
-            new_basket_item.quantity = quantity
-            new_basket_item.save()
+            basket_slot.quantity = quantity
         else:
-            new_basket_item.delete()
+            basket_slot.delete()
+            basket_slot.save()
 
-        basket = Basket.objects.filter(user=request.user).order_by('product__category')
-
-        content = {
-            'basket': basket,
-        }
-
-        result = render_to_string('basketapp/basket.html', content)
-
-        return JsonResponse({'result': result})
+        return HttpResponse('ok')
