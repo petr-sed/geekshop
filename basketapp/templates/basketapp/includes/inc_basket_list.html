@@ -1,0 +1,46 @@
+{% for item in basket_items %}
+        <img src="/media/{{ item.product.image }}" 
+             alt="{{ item.product.short_desc }}">
+        <span class="category_name">{{ item.product.category.name }}</span> 
+        <span class="product_name">{{ item.product.name }}</span>
+        <span class="product_price">{{ item.product.price }}&nbspруб</span>
+        <input type="number" name="{{ item.pk }}" min="0" 
+                             value="{{ item.quantity }}">
+        <span class="product_cost">{{ item.cost }}&nbspруб</span>
+        <button class="btn btn-round">
+            <a href="{% url 'basket:remove' item.pk %}" class="">
+                удалить
+            </a>
+        </button>
+    </div>
+{% endfor %}
+<table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total  Price</th>
+          <th></th>
+        </tr>
+      </thead>
+<tbody>
+       {% for prod in basket %}
+        <tr>
+          <th scope="row">{{ prod.id }}</th>
+          <td><img src="../media/{{ prod.product.image }}" alt="Картинка не прогрузилась"></td>
+          <td>{{ prod.product.name }}</td>
+          <td>{{ prod.product.price }}</td>
+          <td><input type="number" min="0" name="{{ prod.pk }}" value="{{ prod.quantity }}" title=" "></td>
+          <td>{{ prod.cost }}</td>
+          <td><a href="{% url 'basket:remove' prod.pk %}">Delete from cart</a> </td>
+        </tr>
+       {% endfor %}
+      </tbody>
+
+
+{% if basket_items %}
+    <h3>Final price: {{ request.user|basket_total_cost }}</h3>
+{% endif %}
