@@ -46,12 +46,11 @@ def basket_remove(request, pk):
 @login_required
 def basket_edit(request, pk):
     if request.is_ajax():
-        basket_slot = get_object_or_404(Basket, pk=int(pk))
+        basket_slot = get_object_or_404(Basket, pk=pk)
         quantity = int(request.GET.get('quantity'))
         if quantity > 0:
             basket_slot.quantity = quantity
+            basket_slot.save()
         else:
             basket_slot.delete()
-            basket_slot.save()
-
         return HttpResponse('ok')
