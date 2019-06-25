@@ -28,7 +28,6 @@
         </tr>
       </thead>
       <tbody>
-      <div class="basket_list">
        {% for prod in basket %}
         <tr>
           <th scope="row">{{ prod.id }}</th>
@@ -39,7 +38,8 @@
               <div class="basket_list">
                   <input type="number" min="0"
                          name="{{ prod.pk }}"
-                         value="{{ prod.quantity }}">
+                         value="{{ prod.quantity }}"
+                         title="">
               </div>
           </td>
           <td>{{ prod.cost }}</td>
