@@ -529,7 +529,7 @@ a.active{
   }
 }
 
-.table img{
+.table img, .product_record img, .user_record img{
   width: 100px;
   height: 100px;
 }
