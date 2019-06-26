@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('basket/', include('basketapp.urls', namespace='basket')),
     path('deal/<int:pk>/', mainapp.deal, name='deal'),
+    path('admin_custom/', include('adminapp.urls', namespace='admin'))
 ]
 
 if settings.DEBUG:
