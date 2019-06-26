@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.views.generic import DetailView, CreateView, UpdateView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from authapp.models import ShopUser
 from django.shortcuts import get_object_or_404, render
 from mainapp.models import Product, ProductCategory
@@ -48,7 +48,7 @@ def user_update(request, pk):
         edit_form = ShopUserAdminEditForm(request.POST, request.FILES, instance=edit_user)
         if edit_form.is_valid():
             edit_form.save()
-            return HttpResponseRedirect(reverse('admin:user_update', args=[edit_user.pk]))
+            return HttpResponseRedirect(reverse('admin_custom:user_update', args=[edit_user.pk]))
     else:
         edit_form = ShopUserAdminEditForm(instance=edit_user)
 
@@ -86,22 +86,24 @@ class CategoryListView(IsSuperUserView, ListView):
         context['title'] = 'Категории, Админка'
         return context
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(IsSuperUserView, CreateView):
     model = ProductCategory
     template_name = 'adminapp/category_create.html'
     success_url = reverse_lazy('admin_custom:categories')
     fields = '__all__'
 
 
-class CategoryUpdateView(UpdateView):
+class CategoryUpdateView(IsSuperUserView, UpdateView):
     model = ProductCategory
     template_name = 'adminapp/category_create.html'
     success_url = reverse_lazy('admin_custom:categories')
     fields = '__all__'
 
 
-def category_delete(request, pk):
-    pass
+class CategoryDeleteView(IsSuperUserView, DeleteView):
+    model = ProductCategory
+    template_name = 'adminapp/category_delete.html'
+    success_url = reverse_lazy('admin_custom:categories')
 
 class ProductListView(IsSuperUserView, ListView):
     model = Product
@@ -129,19 +131,21 @@ class ProductDetailView(IsSuperUserView, DetailView):
         context['title'] = '{}, Админка'.format(title)
         return context
 
-class ProductsCreateView(CreateView):
+class ProductsCreateView(IsSuperUserView, CreateView):
     model = Product
     template_name = 'adminapp/product_update.html'
     success_url = reverse_lazy('admin_custom:products')
     fields = '__all__'
 
 
-class ProductsUpdateView(UpdateView):
+class ProductsUpdateView(IsSuperUserView, UpdateView):
     model = Product
     template_name = 'adminapp/product_update.html'
     success_url = reverse_lazy('admin_custom:products')
     fields = '__all__'
 
 
-def product_delete(request, pk):
-    pass
+class ProductDeleteView(IsSuperUserView, DeleteView):
+    model = Product
+    template_name = 'adminapp/product_delete.html'
+    success_url = reverse_lazy('admin_custom:products')
