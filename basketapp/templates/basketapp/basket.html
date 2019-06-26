@@ -42,7 +42,11 @@
                          title="">
               </div>
           </td>
-          <td>{{ prod.cost }}</td>
+          <td>
+              <div class="basket_list">
+                {{ prod.cost }}
+              </div>
+          </td>
           <td><a href="{% url 'basket:remove' prod.pk %}">Delete from cart</a> </td>
         </tr>
        {% endfor %}
