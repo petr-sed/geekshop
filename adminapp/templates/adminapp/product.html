@@ -1,0 +1,12 @@
+{% extends 'admin/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <h1>{{ object.name }}</h1>
+    <img width="200" src="/media/{{ object.image }}/">
+    <p>{{ object.short_desc }}</p>
+    {# <a href="{% url 'admin_custom:product_update' object.pk %}">Редактировать</a><br>#}
+    {# <a href="{% url 'admin_custom:product_delete' object.pk %}">Удалить</a><br>#}
+    <a href="{% url 'admin_custom:products' %}">Все продукты</a><br>
+
+{% endblock %}
