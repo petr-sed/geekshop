@@ -1,3 +1,4 @@
+from django.views.generic import DetailView
 from authapp.models import ShopUser
 from django.shortcuts import get_object_or_404, render
 from mainapp.models import Product, ProductCategory
@@ -72,17 +73,14 @@ def user_delete(request, pk):
     return render(request, 'adminapp/user_delete.html', content)
 
 
-def categories(request):
-    title = 'админка/категории'
+class CategoryListView(ListView):
+    model = ProductCategory
+    template_name = 'adminapp/categories.html'
 
-    categories_list = ProductCategory.objects.all()
-
-    content = {
-        'title': title,
-        'objects': categories_list
-    }
-
-    return render(request, 'adminapp/categories.html', content)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CategoryListView, self).get_context_data(**kwargs)
+        context['title'] = 'Категории, Админка'
+        return context
 
 
 def category_create(request):
@@ -112,15 +110,13 @@ class ProductListView(ListView):
         context['categories'] = ProductCategory.objects.all()
         return context
 
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'adminapp/product.html'
 
 
 def product_create(request, pk):
     pass
-
-
-def product_read(request, pk):
-    pass
-
 
 def product_update(request, pk):
     pass
