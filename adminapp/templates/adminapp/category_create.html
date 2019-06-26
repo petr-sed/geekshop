@@ -1,0 +1,10 @@
+{% extends 'admin/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <form class = "form-horizontal" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Применить">
+    </form>
+{% endblock %}

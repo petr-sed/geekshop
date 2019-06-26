@@ -1,10 +1,11 @@
-from django.views.generic import DetailView
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.views.generic import DetailView, CreateView, UpdateView
 from authapp.models import ShopUser
 from django.shortcuts import get_object_or_404, render
 from mainapp.models import Product, ProductCategory
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from authapp.forms import ShopUserRegisterForm
 from adminapp.forms import ShopUserAdminEditForm
 from django.views.generic.list import ListView
@@ -72,8 +73,11 @@ def user_delete(request, pk):
 
     return render(request, 'adminapp/user_delete.html', content)
 
+class IsSuperUserView(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser
 
-class CategoryListView(ListView):
+class CategoryListView(IsSuperUserView, ListView):
     model = ProductCategory
     template_name = 'adminapp/categories.html'
 
@@ -82,19 +86,24 @@ class CategoryListView(ListView):
         context['title'] = 'Категории, Админка'
         return context
 
+class CategoryCreateView(CreateView):
+    model = ProductCategory
+    template_name = 'adminapp/category_create.html'
+    success_url = reverse_lazy('admin_custom:categories')
+    fields = '__all__'
 
-def category_create(request):
-    pass
 
-
-def category_update(request, pk):
-    pass
+class CategoryUpdateView(UpdateView):
+    model = ProductCategory
+    template_name = 'adminapp/category_create.html'
+    success_url = reverse_lazy('admin_custom:categories')
+    fields = '__all__'
 
 
 def category_delete(request, pk):
     pass
 
-class ProductListView(ListView):
+class ProductListView(IsSuperUserView, ListView):
     model = Product
     template_name = 'adminapp/products.html'
 
@@ -110,16 +119,28 @@ class ProductListView(ListView):
         context['categories'] = ProductCategory.objects.all()
         return context
 
-class ProductDetailView(DetailView):
+class ProductDetailView(IsSuperUserView, DetailView):
     model = Product
     template_name = 'adminapp/product.html'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        title = Product.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = '{}, Админка'.format(title)
+        return context
 
-def product_create(request, pk):
-    pass
+class ProductsCreateView(CreateView):
+    model = Product
+    template_name = 'adminapp/product_update.html'
+    success_url = reverse_lazy('admin_custom:products')
+    fields = '__all__'
 
-def product_update(request, pk):
-    pass
+
+class ProductsUpdateView(UpdateView):
+    model = Product
+    template_name = 'adminapp/product_update.html'
+    success_url = reverse_lazy('admin_custom:products')
+    fields = '__all__'
 
 
 def product_delete(request, pk):
