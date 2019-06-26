@@ -2,27 +2,21 @@
 {% load staticfiles %}
 
 {% block content %}
+    {% include 'adminapp/includes/inc_category_menu.html' %}
   <div class="products_list">
     <button class="new_product">
-      <a href={% url 'admin_custom:product_create' category.pk %}>
-        новый продукт
-      </a>
+      {#<a href={% url 'admin_custom:product_create' category.pk %}>новый продукт</a>#}
     </button>
 
-    {% for object in objects %}
+    {% for object in object_list %}
       <div class="product_record">
         <img
           src="/media/{{object.image|default:'products_images/default.jpg'}}"
           alt="{{ object.name }}">
         <div class="product_name">
-          {{ object.name|title }}
+            <a href="{% url 'admin_custom:product_read' object.pk %}">{{ object.name|title }}</a>
         </div>
         <div class="product_actions">
-          <button>
-            <a href={% url 'admin_custom:product_read' object.pk %}>
-              подробнее
-            </a>
-          </button>
           <button>
             <a href={% url 'admin_custom:product_update' object.pk %}>
               редактировать

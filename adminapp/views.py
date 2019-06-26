@@ -6,6 +6,7 @@ from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse
 from authapp.forms import ShopUserRegisterForm
 from adminapp.forms import ShopUserAdminEditForm
+from django.views.generic.list import ListView
 
 @user_passes_test(lambda u: u.is_superuser)
 def users(request):
@@ -95,20 +96,22 @@ def category_update(request, pk):
 def category_delete(request, pk):
     pass
 
+class ProductListView(ListView):
+    model = Product
+    template_name = 'adminapp/products.html'
 
-def products(request, pk):
-    title = 'админка/продукт'
+    def get_queryset(self):
+        queryset = super(ProductListView, self).get_queryset()
+        if self.kwargs.get('category_pk'):
+            queryset = queryset.filter(category=self.kwargs.get('category_pk'))
+        return queryset
 
-    category = get_object_or_404(ProductCategory, pk=pk)
-    products_list = Product.objects.filter(category__pk=pk).order_by('name')
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductListView, self).get_context_data(**kwargs)
+        context['title'] = 'Все продукты, Админка'
+        context['categories'] = ProductCategory.objects.all()
+        return context
 
-    content = {
-        'title': title,
-        'category': category,
-        'objects': products_list,
-    }
-
-    return render(request, 'adminapp/products.html', content)
 
 
 def product_create(request, pk):
