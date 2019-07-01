@@ -141,21 +141,44 @@ class ProductDetailView(IsSuperUserView, DetailView):
         context['title'] = '{}, Админка'.format(title)
         return context
 
-class ProductsCreateView(IsSuperUserView, CreateView):
+class ProductCreateView(IsSuperUserView, CreateView):
     model = Product
     template_name = 'adminapp/product_update.html'
     success_url = reverse_lazy('admin_custom:products')
     fields = '__all__'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductCreateView, self).get_context_data(**kwargs)
+        context['title'] = 'Создание продукта, Админка'
+        return context
 
-class ProductsUpdateView(IsSuperUserView, UpdateView):
+
+class ProductUpdateView(IsSuperUserView, UpdateView):
     model = Product
     template_name = 'adminapp/product_update.html'
     success_url = reverse_lazy('admin_custom:products')
     fields = '__all__'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductUpdateView, self).get_context_data(**kwargs)
+        title = Product.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = '{}, Админка'.format(title)
+        return context
 
 
 class ProductDeleteView(IsSuperUserView, DeleteView):
     model = Product
     template_name = 'adminapp/product_delete.html'
     success_url = reverse_lazy('admin_custom:products')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductDeleteView, self).get_context_data(**kwargs)
+        title = Product.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = 'Удаление {}'.format(title)
+        return context
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_active = False
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
