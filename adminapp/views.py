@@ -10,19 +10,18 @@ from authapp.forms import ShopUserRegisterForm
 from adminapp.forms import ShopUserAdminEditForm
 from django.views.generic.list import ListView
 
-@user_passes_test(lambda u: u.is_superuser)
-def users(request):
-    title = 'админка/пользователи'
+class IsSuperUserView(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser
 
-    users_list = ShopUser.objects.all().order_by('-is_active', '-is_superuser', '-is_staff', 'username')
+class UsersListView(IsSuperUserView, ListView):
+    model = ShopUser
+    template_name = 'adminapp/users.html'
 
-    content = {
-        'title': title,
-        'objects': users_list
-    }
-
-    return render(request, 'adminapp/users.html', content)
-
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(UsersListView, self).get_context_data(**kwargs)
+        context['title'] = 'Пользователи, Админка'
+        return context
 
 def user_create(request):
     title = 'пользователи/создание'
@@ -72,10 +71,6 @@ def user_delete(request, pk):
     content = {'title': title, 'user_to_delete': user}
 
     return render(request, 'adminapp/user_delete.html', content)
-
-class IsSuperUserView(UserPassesTestMixin):
-    def test_func(self):
-        return self.request.user.is_superuser
 
 class CategoryListView(IsSuperUserView, ListView):
     model = ProductCategory
