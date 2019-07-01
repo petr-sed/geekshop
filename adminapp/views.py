@@ -23,6 +23,17 @@ class UsersListView(IsSuperUserView, ListView):
         context['title'] = 'Пользователи, Админка'
         return context
 
+class UserCreateView(IsSuperUserView, CreateView):
+    model = ShopUser
+    template_name = 'adminapp/user_create.html'
+    success_url = reverse_lazy('admin_custom:users')
+    fields = '__all__'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(UserCreateView, self).get_context_data(**kwargs)
+        context['title'] = 'Создание пользователя, Админка'
+        return context
+
 def user_create(request):
     title = 'пользователи/создание'
 
