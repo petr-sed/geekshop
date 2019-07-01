@@ -3,7 +3,7 @@
     <div class="categories">
         <ul>
             {% for link in links_sec_menu %}
-                <li><a href="{% url 'products:category' link.id %}"
+                <li><a href="{% url 'products:page' link.id 1 %}"
                        class="{% if request.resolver_match.kwargs.pk == link.id %}
                                  active
                               {% endif %}">
