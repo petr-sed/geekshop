@@ -34,38 +34,17 @@ class UserCreateView(IsSuperUserView, CreateView):
         context['title'] = 'Создание пользователя, Админка'
         return context
 
-def user_create(request):
-    title = 'пользователи/создание'
+class UserUpdateView(IsSuperUserView, UpdateView):
+    model = ShopUser
+    template_name = 'adminapp/user_update.html'
+    success_url = reverse_lazy('admin_custom:users')
+    fields = '__all__'
 
-    if request.method == 'POST':
-        user_form = ShopUserRegisterForm(request.POST, request.FILES)
-        if user_form.is_valid():
-            user_form.save()
-            return HttpResponseRedirect(reverse('admin:users'))
-    else:
-        user_form = ShopUserRegisterForm()
-
-    content = {'title': title, 'update_form': user_form}
-
-    return render(request, 'adminapp/user_update.html', content)
-
-
-def user_update(request, pk):
-    title = 'пользователи/редактирование'
-
-    edit_user = get_object_or_404(ShopUser, pk=pk)
-    if request.method == 'POST':
-        edit_form = ShopUserAdminEditForm(request.POST, request.FILES, instance=edit_user)
-        if edit_form.is_valid():
-            edit_form.save()
-            return HttpResponseRedirect(reverse('admin_custom:user_update', args=[edit_user.pk]))
-    else:
-        edit_form = ShopUserAdminEditForm(instance=edit_user)
-
-    content = {'title': title, 'update_form': edit_form}
-
-    return render(request, 'adminapp/user_update.html', content)
-
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(UserUpdateView, self).get_context_data(**kwargs)
+        title = ShopUser.objects.get(pk=self.kwargs.get('pk')).username
+        context['title'] = '{}, Админка'.format(title)
+        return context
 
 def user_delete(request, pk):
     title = 'пользователи/удаление'
