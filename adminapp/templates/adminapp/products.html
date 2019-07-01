@@ -5,7 +5,7 @@
     {% include 'adminapp/includes/inc_category_menu.html' %}
   <div class="products_list">
     <button class="new_product">
-      {#<a href={% url 'admin_custom:product_create' category.pk %}>новый продукт</a>#}
+      <a href={% url 'admin_custom:product_create'%}>новый продукт</a>
     </button>
 
     {% for object in object_list %}
