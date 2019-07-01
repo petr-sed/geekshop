@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 import json
 from .models import Product, ProductCategory
 from basketapp.models import Basket
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
@@ -14,9 +15,11 @@ titles = data['titles']
 
 def main(request):
     products = Product.objects.all()
-    hot_product = []
-    hot_product.append(Product.objects.filter(is_hot=True).order_by('?').first())
-    hot_product.append(Product.objects.filter(is_hot=True).order_by('?').first())
+    hot_product = [Product.objects.filter(is_hot=True).order_by('?').first()]
+    while len(hot_product) < 2:
+        sec_hot = Product.objects.filter(is_hot=True).order_by('?').first()
+        if hot_product[0] != sec_hot:
+            hot_product.append(sec_hot)
     content = {
                 'titles': titles,
                 'products_4': products[:4],
@@ -26,25 +29,43 @@ def main(request):
             }
     return render(request, 'mainapp/index.html', content)
 
-def products(request, pk=None):
-    if pk:
-        category = get_object_or_404(ProductCategory, pk=pk)
-        products = Product.objects.filter(category=category)
-        media = '../../media/'
-    else:
-        products = Product.objects.all()[:12]
-        media = '../media/'
-    hot_product = []
-    hot_product.append(Product.objects.filter(is_hot=True).order_by('?').first())
-    hot_product.append(Product.objects.filter(is_hot=True).order_by('?').first())
-    content = {
-               'links_sec_menu': links_sec_menu,
-               'products_12': products,
-               'titles': titles,
-               'hot_product': hot_product,
-               'media': media,
-               }
-    return render(request, 'mainapp/catalog.html', content)
+def products(request, pk=None, page=1):
+    """products filter"""
+    if pk is not None:
+        if pk == 0:
+            category = {
+                'pk': 0,
+                'name': 'все'
+            }
+            products = Product.objects.filter(is_active=True, category__is_active=True).order_by('price')
+        else:
+            category = get_object_or_404(ProductCategory, pk=pk)
+            products = Product.objects.filter(category__pk=pk, is_active=True, category__is_active=True).order_by('price')
+
+        """hot_product"""
+        hot_product = [Product.objects.filter(is_hot=True).order_by('?').first()]
+        while len(hot_product) < 2:
+            sec_hot = Product.objects.filter(is_hot=True).order_by('?').first()
+            if hot_product[0] != sec_hot:
+                hot_product.append(sec_hot)
+
+        """paginator"""
+        paginator = Paginator(products, 6)
+        try:
+            products_paginator = paginator.page(page)
+        except PageNotAnInteger:
+            products_paginator = paginator.page(1)
+        except EmptyPage:
+            products_paginator = paginator.page(paginator.num_pages)
+
+        content = {
+                   'links_sec_menu': links_sec_menu,
+                   'products': products_paginator,
+                   'titles': titles,
+                   'hot_product': hot_product,
+                   'category': category,
+                   }
+        return render(request, 'mainapp/catalog.html', content)
 
 def contact(request):
     content = {

@@ -11,12 +11,12 @@
 {% endblock %}
 {% block content %}
             {% include 'mainapp/includes/inc_sec_menu.html' %}
-            {% for product in products_12 %}
+            {% for product in products %}
                 {% if forloop.counter|add:2|divisibleby:3 %}
                     <div class="trends row row_3">
                 {% endif %}
                     <div class="product col-lg-4">
-                        <img src="{{ media }}{{ product.image }}" alt="Картинка не прогрузилась">
+                        <img src="http://localhost:8000/media/{{ product.image }}" alt="Картинка не прогрузилась">
                         <a href="{% url 'deal' product.id  %}">
                             <div class="ar_in"></div>
                             <h3>{{ product.name }}</h3>
@@ -27,9 +27,22 @@
                     </div>
                 {% endif %}
             {% endfor %}
-            <div class="row ring">
-                <a href="/"><img src="/static/img/ring.png" alt="Картинка не прогрузилась"></a>
+            <div class="paginator">
+                {% if products.has_previous %}
+                    <a href="{% url 'products:page' category.pk products.previous_page_number %}">
+                        <
+                    </a>
+                {% endif %}
+                <span class="current">
+                    страница {{ products.number }} из {{ products.paginator.num_pages }}
+                </span>
+                {% if products.has_next %}
+                    <a href="{% url 'products:page' category.pk products.next_page_number %}">
+                        >
+                    </a>
+                {% endif %}
             </div>
+
             <div class="row level_2">
                 {% include 'mainapp/includes/inc_prod_2.html' %}
             </div>

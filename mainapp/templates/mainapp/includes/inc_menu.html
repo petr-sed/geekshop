@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li>
-                <a href="{% url 'products:index' %}"
+                <a href="{% url 'products:page' 0 1 %}"
                     class="{% if request.resolver_match.namespace == 'products' %}
                         active
                         {% endif %}">
