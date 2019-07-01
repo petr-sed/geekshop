@@ -1,18 +1,16 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from authapp.models import ShopUser
-from django.shortcuts import get_object_or_404, render
 from mainapp.models import Product, ProductCategory
-from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
-from authapp.forms import ShopUserRegisterForm
-from adminapp.forms import ShopUserAdminEditForm
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 
 class IsSuperUserView(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_superuser
+
+"""User"""
 
 class UsersListView(IsSuperUserView, ListView):
     model = ShopUser
@@ -36,7 +34,7 @@ class UserCreateView(IsSuperUserView, CreateView):
 
 class UserUpdateView(IsSuperUserView, UpdateView):
     model = ShopUser
-    template_name = 'adminapp/user_update.html'
+    template_name = 'adminapp/user_create.html'
     success_url = reverse_lazy('admin_custom:users')
     fields = '__all__'
 
@@ -46,21 +44,24 @@ class UserUpdateView(IsSuperUserView, UpdateView):
         context['title'] = '{}, Админка'.format(title)
         return context
 
-def user_delete(request, pk):
-    title = 'пользователи/удаление'
+class UserDeleteView(DeleteView):
+    model = ShopUser
+    template_name = 'adminapp/user_delete.html'
+    success_url = reverse_lazy('admin_custom:users')
 
-    user = get_object_or_404(ShopUser, pk=pk)
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_active = False
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
-    if request.method == 'POST':
-        # user.delete()
-        # вместо удаления лучше сделаем неактивным
-        user.is_active = False
-        user.save()
-        return HttpResponseRedirect(reverse('admin_custom:users'))
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(UserDeleteView, self).get_context_data(**kwargs)
+        title = ShopUser.objects.get(pk=self.kwargs.get('pk')).username
+        context['title'] = 'Удаление {}'.format(title)
+        return context
 
-    content = {'title': title, 'user_to_delete': user}
-
-    return render(request, 'adminapp/user_delete.html', content)
+"""Category"""
 
 class CategoryListView(IsSuperUserView, ListView):
     model = ProductCategory
@@ -77,6 +78,11 @@ class CategoryCreateView(IsSuperUserView, CreateView):
     success_url = reverse_lazy('admin_custom:categories')
     fields = '__all__'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CategoryCreateView, self).get_context_data(**kwargs)
+        context['title'] = 'Создание категории, Админка'
+        return context
+
 
 class CategoryUpdateView(IsSuperUserView, UpdateView):
     model = ProductCategory
@@ -84,11 +90,30 @@ class CategoryUpdateView(IsSuperUserView, UpdateView):
     success_url = reverse_lazy('admin_custom:categories')
     fields = '__all__'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CategoryUpdateView, self).get_context_data(**kwargs)
+        title = ProductCategory.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = '{}, Админка'.format(title)
+        return context
 
 class CategoryDeleteView(IsSuperUserView, DeleteView):
     model = ProductCategory
     template_name = 'adminapp/category_delete.html'
     success_url = reverse_lazy('admin_custom:categories')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_active = False
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CategoryDeleteView, self).get_context_data(**kwargs)
+        title = ProductCategory.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = 'Удаление {}'.format(title)
+        return context
+
+"""Products"""
 
 class ProductListView(IsSuperUserView, ListView):
     model = Product
