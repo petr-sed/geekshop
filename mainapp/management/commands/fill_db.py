@@ -1,8 +1,10 @@
 from django.core.management.base import BaseCommand
 from mainapp.models import ProductCategory, Product
 from authapp.models import ShopUser
-
 import json, os
+from geekshop.settings import config, local_config_path
+
+config.read(local_config_path)
 
 JSON_PATH = 'mainapp/json'
 
@@ -30,6 +32,6 @@ class Command(BaseCommand):
             new_product.save()
 
         ShopUser.objects.all().delete()
-        ShopUser.objects.create_superuser('admin', 'admin@geekshop.local', 'admin', age=20)
+        ShopUser.objects.create_superuser(config.get('admin', 'SUPER_USER'))
 
 
