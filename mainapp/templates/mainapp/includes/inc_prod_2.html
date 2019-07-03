@@ -1,8 +1,9 @@
 {% load staticfiles %}
+{% load custom_tags %}
 {% block prod_2 %}
     {% for prod in hot_product_2 %}
              <div class="col-lg-6 promo">
-                    <img src="http://localhost:8000/media/{{ prod.image }}" alt="Картинка не прогрузилась">
+                    <img src="{{ prod.image|media_folder_products }}" alt="Картинка не прогрузилась">
                     <div class="slider-content">
                         <h3>exclusive</h3>
                         <h1>{{prod.name}}</h1>

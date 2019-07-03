@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load staticfiles %}
+{% load custom_tags %}
 {% block css %}
     {{ block.super}}
     <link rel="stylesheet" type="text/css" href="{% static '/css/style_deals.css' %}">
@@ -16,7 +17,7 @@
                     <div class="trends row row_3">
                 {% endif %}
                     <div class="product col-lg-4">
-                        <img src="http://localhost:8000/media/{{ product.image }}" alt="Картинка не прогрузилась">
+                        <img src="{{ product.image|media_folder_products }}" alt="Картинка не прогрузилась">
                         <a href="{% url 'deal' product.id  %}">
                             <div class="ar_in"></div>
                             <h3>{{ product.name }}</h3>

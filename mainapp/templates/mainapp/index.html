@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load staticfiles %}
+{% load  custom_tags%}
 {% block header %}
     {{ block.super }}
     <div class="slider-content">
@@ -30,7 +31,7 @@
                 <div class="row">
                     {% for product in products_4 %}
                         <div class="col-lg-3 product row_4">
-                            <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась">
+                            <img src="{{ product.image|media_folder_products }}" alt="Картинка не прогрузилась">
                             <a href="{% url 'deal' product.id %}">
                                 <div class="ar_in"></div>
                                 <h3>{{ product.name }}</h3>
@@ -59,7 +60,7 @@
                             <div class="row">
                         {% endif %}
                             <div class="col-lg-4 product row_3">
-                                <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась">
+                                <img src="{{ product.image|media_folder_products }}" alt="Картинка не прогрузилась">
                                 <a href="{% url 'deal' product.id %}">
                                     <div class="ar_in"></div>
                                     <h3>{{ product.name }}</h3>
@@ -88,7 +89,7 @@
             </div>
             <div class="level_5 row">
                 <div class="col-lg-6 promo">
-                    <img src="http://localhost:8000/media/{{ hot_product_1.image }}" alt="Картинка не прогрузилась">
+                    <img src="{{ hot_product_1.image|media_folder_products }}" alt="Картинка не прогрузилась">
                     <div class="slider-content">
                         <h3>exclusive</h3>
                         <h1>{{hot_product_1.name}}</h1>
@@ -106,7 +107,7 @@
                         {% endif %}
                             <div class="col-lg-6 right_bar">
                                 <div class="product row_4">
-                                    <img src="../media/{{ product.image }}" alt="Картинка не прогрузилась">
+                                    <img src="{{ product.image|media_folder_products }}" alt="Картинка не прогрузилась">
                                     <a href="{% url 'deal' product.id %}">
                                         <div class="ar_in">
                                         </div>
