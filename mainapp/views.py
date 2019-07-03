@@ -15,17 +15,15 @@ titles = data['titles']
 
 def main(request):
     products = Product.objects.all()
-    hot_product = [Product.objects.filter(is_hot=True).order_by('?').first()]
-    while len(hot_product) < 2:
-        sec_hot = Product.objects.filter(is_hot=True).order_by('?').first()
-        if hot_product[0] != sec_hot:
-            hot_product.append(sec_hot)
+    hot_product = Product.objects.filter(is_hot=True).order_by('?')
+    hot_product = hot_product[:3]
     content = {
                 'titles': titles,
                 'products_4': products[:4],
                 'products_6': products[4:10],
                 'products_22': products[10:14],
-                'hot_product': hot_product,
+                'hot_product_2': hot_product[:2],
+                'hot_product_1': hot_product[2],
             }
     return render(request, 'mainapp/index.html', content)
 

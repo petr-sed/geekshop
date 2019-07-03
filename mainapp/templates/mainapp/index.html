@@ -88,12 +88,14 @@
             </div>
             <div class="level_5 row">
                 <div class="col-lg-6 promo">
-                    <img src="{% static '/img/product-1-lg.jpg' %}" alt="Картинка не прогрузилась">
+                    <img src="http://localhost:8000/media/{{ hot_product_1.image }}" alt="Картинка не прогрузилась">
                     <div class="slider-content">
                         <h3>exclusive</h3>
-                        <h1>Fishnet Chair</h1>
-                        <p>Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
-                        <a class="order" href="">order us</a>
+                        <h1>{{hot_product_1.name}}</h1>
+                        <p>{{hot_product_1.description}}</p>
+                        <a class="order" href="">
+                            order us
+                        </a>
                     </div>
 
                 </div>
