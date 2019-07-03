@@ -15,7 +15,7 @@ titles = data['titles']
 
 def main(request):
     products = Product.objects.all()
-    hot_product = Product.objects.filter(is_hot=True).order_by('?')
+    hot_product = Product.objects.filter(is_hot=True).distinct().order_by('?')
     hot_product = hot_product[:3]
     content = {
                 'titles': titles,
@@ -27,7 +27,7 @@ def main(request):
             }
     return render(request, 'mainapp/index.html', content)
 
-def products(request, pk=None, page=1):
+def products(request, pk=0, page=1):
     """products filter"""
     if pk is not None:
         if pk == 0:
@@ -57,7 +57,7 @@ def products(request, pk=None, page=1):
                    'links_sec_menu': links_sec_menu,
                    'products': products_paginator,
                    'titles': titles,
-                   'hot_product': hot_product,
+                   'hot_product_2': hot_product,
                    'category': category,
                    }
         return render(request, 'mainapp/catalog.html', content)
