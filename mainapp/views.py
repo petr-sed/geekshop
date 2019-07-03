@@ -43,11 +43,8 @@ def products(request, pk=None, page=1):
             products = Product.objects.filter(category__pk=pk, is_active=True, category__is_active=True).order_by('price')
 
         """hot_product"""
-        hot_product = [Product.objects.filter(is_hot=True).order_by('?').first()]
-        while len(hot_product) < 2:
-            sec_hot = Product.objects.filter(is_hot=True).order_by('?').first()
-            if hot_product[0] != sec_hot:
-                hot_product.append(sec_hot)
+        hot_product = Product.objects.filter(is_hot=True).order_by('?')
+        hot_product = hot_product[:2]
 
         """paginator"""
         paginator = Paginator(products, 6)
