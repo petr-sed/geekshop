@@ -1,6 +1,6 @@
 Django==2.2.2
 django-debug-toolbar==2.0
 ipython==7.6.0
-pillow==6.0.0
+pillow==9.3.0
 pip-chill==0.1.8
 
